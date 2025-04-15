@@ -1,0 +1,4 @@
+<h1 {% if not tag %}class="postslist-header"{% endif %}> {% if tag %}{{ tag.name }}: {% endif %}{{ postsCount }} замет
+	{%- if postsCount % 10 == 1 and postsCount % 100 != 11 -%}ка
+	{%- elif postsCount % 10 >= 2 and postsCount % 10 <= 4 and (postsCount % 100 < 10 or postsCount % 100 >= 20) -%}ки{%- else -%}
+	ок{%- endif -%}</h1>

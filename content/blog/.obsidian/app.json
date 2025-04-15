@@ -1,0 +1,13 @@
+{
+  "useMarkdownLinks": true,
+  "alwaysUpdateLinks": true,
+  "showUnsupportedFiles": true,
+  "attachmentFolderPath": "media",
+  "smartIndentList": true,
+  "promptDelete": false,
+  "livePreview": true,
+  "defaultViewMode": "preview",
+  "strictLineBreaks": false,
+  "useTab": true,
+  "showLineNumber": true
+}

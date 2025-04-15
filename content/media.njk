@@ -1,0 +1,47 @@
+---js
+permalink: /media/
+
+const eleventyComputed = {
+	title: 'Медиатека · {{ metadata.title }}',
+};
+---
+
+
+<h1>Медиатека</h1>
+<div class="mediateka-grid image-grid">
+{% for post in collections.posts %}
+{% set images = post.data.media | imagesOnly | sortAlphabetically %}
+{% if images.length > 0 %}
+	<div class="mediateka-grid-item image-item with-title unvisitable">
+	 <div class='post-title-block'>
+			<a href="{{ post.url }}">{{ post.data.title }}</a>
+		</div>
+		<div class="image-item">
+			<a href="/media/{{ images[0] }}">
+			{% image "./content/blog/media/" + images[0], images[0], {height: 160} %}
+			</a>
+		</div>
+		</div>
+		{% for file in images.slice(1) %}
+			<div class="mediateka-grid-item image-item unvisitable">
+				<a href="/media/{{ file }}">
+				{% image "./content/blog/media/" + file, file, {height: 160} %}
+				</a>
+			</div>
+		{% endfor %}
+{% endif %}
+{% endfor %}
+</div>
+
+<ul class='linklist'>
+	{% for post in collections.posts %}
+	{% set nonImages = post.data.media | nonImages | sortAlphabetically %}
+	{% if nonImages.length > 0 %}
+		{% for file in nonImages %}
+			<li class='linklist-item'>
+				<a href="/media/{{ file }}">{{ file }}</a>
+			</li>
+		{% endfor %}
+	{% endif %}
+	{% endfor %}
+</ul>

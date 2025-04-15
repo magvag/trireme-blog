@@ -1,0 +1,13 @@
+{% set taglist = post.data.taglist %}
+{% if taglist and taglist | typeof == "string" %}
+  {% set taglist = [taglist] %}
+{% endif %}
+
+<ul class="linklist post-metadata unvisitable">
+			<li class="post-time linklist-item"><time  datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time></li>
+			{%- for posttag in taglist | filterTagList %}
+			{% set tagUrl %}/tags/{{ posttag | slugify }}/{% endset %}
+			<li class="post-tag underline linklist-item {% if tag.name and tag.name == posttag %}highlighted{% endif %}
+				"><a href="{{ tagUrl }}">{{ posttag }}</a>{%- if not loop.last %}{% endif %}</li>
+			{%- endfor %}
+		</ul>

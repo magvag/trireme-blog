@@ -1,0 +1,26 @@
+---js
+const posts_per_page = 15;
+
+const pagination = {
+	data: "collections.posts",
+	size: posts_per_page,
+	alias: "page",
+	}
+
+const eleventyExcludeFromCollections = true;
+
+const eleventyComputed = {
+		title: "{% if pagination.pageNumber < pagination.pages.length - 1 %}Страница {{ pagination.pageNumber + 1}} ·{% endif %}{{metadata.title}}",
+		permalink: "{{ metadata.blog_homepage }}{% if pagination.pageNumber < pagination.pages.length - 1 %}{{ pagination.pageNumber + 1}}/{% endif %}"
+}
+
+---
+
+{% if pagination.pageNumber === pagination.pages.length - 1%}{% set postslist = collections.posts.slice(-(pagination.items.length + posts_per_page)) %}{% else %}{% set postslist = pagination.items %}{% endif %}
+
+{% set postslistCounter = postsCount %}
+{% include "postspreviews.njk" %}
+<ul class="links-nextprev unvisitable">
+	<li class="links-nextprev-prev">{%- if pagination.page.next %}Ctrl+←<br> {%- if pagination.pageNumber !== pagination.pages.length - 3%}<a href="{{ pagination.page.next.url}}">{% else %}<a href="{{ pagination.page.last.url}}">{% endif %}Позднее</a>{% else %}<p></p>{% endif %}</li>
+	<li class="links-nextprev-next">{%- if pagination.page.previous %}Ctrl+→<br>{%- if page.url !== pagination.page.last.url %}<a href="{{ pagination.page.previous.url}}">{% else %}<a href="{{ metadata.blog_homepage }}{{ pagination.pageNumber - 1 }}/">{% endif %}Ранее</a>{% else %}<p></p>{% endif %}</li>
+</ul>

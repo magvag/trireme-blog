@@ -1,0 +1,84 @@
+---js
+const pagination = {
+  data: "collections.tags",
+  size: 1,
+  alias: "tag",
+  before: function (tagsArray) {
+        let ret = [];
+        const subPageSize = 15;
+
+        // Each item in tagsArray is now an object { tag, items }
+        tagsArray.forEach(tagObj => {
+          const tagName = tagObj.tag;
+          const items = tagObj.items;
+          let totalPages = Math.max(1, Math.ceil(items.length / subPageSize) - 1);
+
+          for (let i = 0; i < totalPages; i++) {
+            const isLastPage = i === totalPages - 1;
+
+            let start, end;
+              if (isLastPage) {
+                const extraItems = Math.min(subPageSize, items.length - i * subPageSize);
+                start = i * subPageSize;
+                end = start + subPageSize + extraItems;
+              } else {
+                start = i * subPageSize;
+                end = start + subPageSize;
+              }
+            const pageItems = items.slice(start, end);
+
+            ret.push({
+              name: tagName,
+              items: pageItems,
+              pageNumber: i + 1,
+              totalPages: totalPages,
+            });
+          }
+        });
+        return ret;
+  }
+};
+
+const eleventyExcludeFromCollections = true;
+
+const eleventyComputed = {
+	title: "Тег: {{ tag.name }} · {{metadata.title}}",
+	permalink: function(data) {
+		return `/tags/${this.slugify(data.tag.name)}/{% if tag.pageNumber !== tag.totalPages %}{{ tag.pageNumber }}/{% endif %}`;
+	},
+ nextURL: function(data) {
+    const pageNumber = data.tag.pageNumber;
+    const totalPages = data.tag.totalPages;
+
+    if (pageNumber == totalPages - 1) {
+      return `/tags/${this.slugify(data.tag.name)}/`;
+    }
+    if (pageNumber < totalPages) {
+      return `/tags/${this.slugify(data.tag.name)}/${pageNumber + 1}/`;
+    }
+    return null;
+
+  },
+  prevURL: function(data) {
+    const pageNumber = data.tag.pageNumber;
+    const totalPages = data.tag.totalPages;
+
+    if (pageNumber === 1) {
+      return null;
+    }
+    return `/tags/${this.slugify(data.tag.name)}/${pageNumber - 1}/`;
+
+  }
+};
+---
+{% set postslist = tag.items %}
+{% set postsCount = postslist | length %}
+<h1>Тег: {{ tag.name }}</h1>
+{% set postslistCounter = postsCount %}
+{% include "postspreviews.njk" %}
+
+
+<ul class="links-nextprev unvisitable">
+	<li class="links-nextprev-prev">{%- if nextURL %}Ctrl+←<br><a href="{{ nextURL }}">Позднее</a>{% else %}<p></p>{% endif %}</li>
+	<li class="links-nextprev-next">{%- if prevURL %}Ctrl+→<br><a href="{{ prevURL }}">Ранее</a>{% else %}<p></p>{% endif %}</li>
+</ul>

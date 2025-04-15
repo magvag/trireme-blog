@@ -1,0 +1,93 @@
+<!doctype html>
+		<!-- Эта страница `{{ page.url }}` была собрана {% currentBuildDate %} -->
+		<!-- Движок: 11ty, тема: Трирема v1.0 -->
+<html lang="{{ metadata.language }}">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>{{ title or metadata.title }}</title>
+		<meta name="description" content="{{ description | striptags or metadata.description | striptags }}">
+		<link rel="alternate" href="/rss/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
+		<link rel="icon" href="/assets/favicon.svg" sizes="any" type="image/svg+xml">
+		<link rel="icon" href="/assets/favicon.png" sizes="32x32">
+
+    <link rel="preload" href="/fonts/CommissionerRegular.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="preload" href="/fonts/CommissionerBoldFlair.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="preload" href="/fonts/CommissionerItalic.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="preload" href="/assets/avatar.png" as="image" type="image/png" crossorigin="">
+
+		{#-
+		Plain-text bundles are provided via the `eleventy-plugin-bundle` plugin:
+		1. CSS:
+			* Add to a per-page bundle using `{% css %}{% endcss %}`
+			* Retrieve bundle content using `{% getBundle "css" %}` or `{% getBundleFileUrl "css" %}`
+		2. Or for JavaScript:
+			* Add to a per-page bundle using `{% js %}{% endjs %}`
+			* Retrieve via `{% getBundle "js" %}` or `{% getBundleFileUrl "js" %}`
+		3. Learn more: https://github.com/11ty/eleventy-plugin-bundle
+		#}
+
+		{#- Add an arbitrary string to the bundle #}
+		{%- css %}/* This is an arbitrary CSS string added to the bundle */{% endcss %}
+		{#- Add the contents of a file to the bundle #}
+		{%- css %}{% include "public/css/default.css" %}{% endcss %}
+		{%- css %}{% include "public/css/custom.css" %}{% endcss %}
+		{#- Or you can add from node_modules #}
+		{# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
+
+		{#- Render the CSS bundle using inlined CSS (for the fastest site performance in production) #}
+		{#- <style>{% getBundle "css" %}</style> #}
+		{#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
+		<link rel="stylesheet" href="{% getBundleFileUrl "css" %}">
+
+
+		{#- Add the heading-anchors web component to the JavaScript bundle #}
+		{%- js %}{% include "node_modules/@zachleat/heading-anchors/heading-anchors.js" %}{% endjs %}
+		{%- js %}{% include "public/scripts/keyboard-nav.js" %}{% endjs %}
+		{%- js %}{% include "public/scripts/scrollable.js" %}{% endjs %}
+		<script src="{% getBundleFileUrl "js" %}"></script>
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Перейти к содержимому</a>
+			<nav>
+				<h2 class="visually-hidden">Навигация</h2>
+				<div class="nav-container scrollable">
+					<a href="/">
+					<img class="avatar" src="/assets/avatar.png" alt="" eleventy:ignore>
+					</a>
+					<div class="nav-content scrollable__in">
+						<div class="nav-title unvisitable">
+							<a href="/" class="site-title{% if page.url == '/' %}current-item{% endif %}">{{ metadata.title }}</a>
+							<span class="site-description">{{ metadata.shortdescription }}</span>
+						</div>
+							<ul class="linklist">
+												{%- for entry in metadata.navigation_pages %}
+													<li class="linklist-item unvisitable {% if entry.url == page.url %}current-item
+														{% else %}underline{% endif %}
+														{% if entry.class %}
+														{{ entry.class }}
+														{% endif %}
+														">{% if entry.url == page.url %}{{entry.title}}{% else %}
+															<a href="{{ entry.url }}">{{entry.title}}</a>{% endif %}</li>
+												{%- endfor %}
+												</ul>
+						</div>
+					</div>
+			</nav>
+</header>
+
+		<main id="skip">
+			<heading-anchors>
+				{{ content | safe }}
+			</heading-anchors>
+		</main>
+
+		<footer class='unvisitable'>
+			<p class="footer-text">© {{ metadata.author.name }}, {{ metadata.blog_foundation }}{#–{% year %} #}<br>
+			<a href="/rss/">РСС,</a> <a href="https://t.me/magmoyed">телеграм-канал</a></p>
+			<p class="footer-built"> Сделано на <a href="https://trireme.magvag.ru/">Триреме</a></p>
+
+		</footer>
+		<script type="module" src="{% getBundleFileUrl "js" %}"></script>
+	</body>
+</html>

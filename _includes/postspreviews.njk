@@ -1,0 +1,28 @@
+<div class="posts-previews">
+{%- for post in postslist | reverse %}
+<div class="post-preview {% if post.url == url %} post-active{% endif %}">
+
+	{% set images = post.data.media | imagesOnly %}
+	{% if images.length  > 0 %}
+	<div class="scrollable">
+		<a href="{{ post.url }}">
+		<div class="image-grid scrollable__in js-scrollable">
+			{% for file in images %}
+					<div class="image-item">
+					{% set thumbnail = "/media/" + file | removeExtension + "_thumbnail.jpeg" %}
+					<img src="{{ thumbnail }}" alt="{{ file | removeExtension }}" height="80px" eleventy:ignore>
+					</div>
+		{% endfor %}
+		</div>
+		</a>
+	</div>
+	{% endif %}
+		<h1 class="preview-title unvisitable {% if post.data.starred %}starred{% endif %}">
+			<a href="{{ post.url }}">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
+		</h1>
+		<div class="preview-description {% if post.data.short %}short{% endif %}">
+			<p> {{ post.data.description | striptags | safe }}</p>
+		</div>
+		{% include "date-and-tags.njk" %}
+</div>
+		{%- endfor %}

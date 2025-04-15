@@ -1,0 +1,17 @@
+---
+title: Теги · {{metadata.title}}
+---
+<h1>Теги</h1>
+{% set topCounts = collections.tags | topTagCounts %}
+{% set minTopCount = topCounts | min%}
+
+<ul class="linklist taglist">
+  {% for tagObj in collections.tags %}
+    {% set tagName = tagObj.tag %}
+    {% set tagUrl = "/tags/" + (tagName | slugify) + "/" %}
+    {% set tagCount = tagObj.items.length %}
+    <li class="linklist-item tag-item{% if tagCount >= minTopCount %} highlighted-item{% endif %}">
+      <a href="{{ tagUrl }}">{{ tagName }}</a>
+    </li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+---
+{# Only include the syntax highlighter CSS on blog posts, included with the CSS per-page bundle #}
+{# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
+{# {%- css %}{% include "public/css/prism-diff.css" %}{%- endcss %} #}
+
+<ul class="linklist post-metadata">
+	<li class="post-time linklist-item"><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></li>
+	{%- for tag in taglist | filterTagList %}
+	{% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+	<li class="post-tag underline linklist-item"><a href="{{ tagUrl }}">{{ tag }}</a>{%- if not loop.last %}{% endif %}</li>
+	{%- endfor %}
+</ul>
+<article>
+<h1{%- if starred %} class="starred"{%- endif %}>{{ title }}</h1>
+
+
+
+
+{{ content | pretty | safe  }}
+
+</article>
+{%- if collections.posts %}
+{%- set previousPost = collections.posts | getPreviousCollectionItem %}
+{%- set nextPost = collections.posts | getNextCollectionItem %}
+{%- if nextPost or previousPost %}
+<ul class="links-nextprev unvisitable">
+	<li class="links-nextprev-prev">{%- if nextPost %}Ctrl+←<br> <a href="{{ nextPost.url }}">{% if nextPost.data.title %}{{ nextPost.data.title }}{% else %}<code>{{ nextPost.url }}</code>{% endif %}</a>{% else %}<p></p>{% endif %}</li>
+	<li class="links-nextprev-next">{%- if previousPost %}Ctrl+→<br><a href="{{ previousPost.url }}">{% if previousPost.data.title %}{{ previousPost.data.title }}{% else %}<code>{{ previousPost.url }}</code>{% endif %}</a>{% else %}<p></p>{% endif %}</li>
+</ul>
+{%- endif %}
+{%- endif %}

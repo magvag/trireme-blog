@@ -1,0 +1,238 @@
+{
+  "main": {
+    "id": "e86d2b14165fd7df",
+    "type": "split",
+    "children": [
+      {
+        "id": "4b9ce2385d6513bc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c9de6f6e5dfc2218",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "markdown-syntax.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "markdown-syntax"
+            }
+          },
+          {
+            "id": "ea0bb6823b8f750f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "newnote.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "newnote"
+            }
+          },
+          {
+            "id": "f540062e93fe1305",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "newnote.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "newnote"
+            }
+          },
+          {
+            "id": "4ce1286a062b8591",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "markdown-syntax.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "markdown-syntax"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "d52e841c15274b54",
+    "type": "split",
+    "children": [
+      {
+        "id": "cf64387bcec6671d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ceb2549996a3da92",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": true
+              },
+              "icon": "lucide-folder-closed",
+              "title": "File explorer"
+            }
+          },
+          {
+            "id": "1d21ed9d97e89ed1",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "0bd083d0bd2765e1",
+    "type": "split",
+    "children": [
+      {
+        "id": "669a323aea5e8786",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c128454d1e8351a8",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Untitled.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Untitled"
+            }
+          },
+          {
+            "id": "5635f18b85477c98",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Untitled.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Untitled"
+            }
+          },
+          {
+            "id": "0091092c179c6c75",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Untitled.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Untitled"
+            }
+          },
+          {
+            "id": "87776af5f12238a6",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "command-palette:Open command palette": false,
+      "templater-obsidian:Templater": false
+    }
+  },
+  "active": "f540062e93fe1305",
+  "lastOpenFiles": [
+    "media/newnote-3.png",
+    "media/newnote-2.png",
+    "media/newnote-1.png",
+    "media/newnote.png",
+    "Untitled.md",
+    "newnote.md",
+    "markdown-syntax.md",
+    "media/1.1-win-3.png",
+    "media/iiig.png",
+    "fourthpost.md",
+    "iiig.md",
+    "Untitled 1.md",
+    "Untitled 2.md",
+    "Untitled 3.md",
+    "Untitled 4.md",
+    "dddd.md",
+    "media/iiig-2.png",
+    "media/iiig-1.png",
+    "media/Pasted image 20250408121608.png",
+    "nottitled.md",
+    "media/nottitled.png",
+    "media/Untitled.png",
+    "titledpost.md",
+    "wwwwwwwwww.md",
+    "media/Formular-Black.otf",
+    "_templates/template.md",
+    "firstpost.md",
+    "fifthpost.md",
+    "thirdpost.md",
+    "secondpost.md",
+    "uuugh.md",
+    "Untitledddd.md",
+    "_templates",
+    "template"
+  ]
+}

@@ -1,0 +1,8 @@
+
+<ol reversed class="postslist">
+{%- for post in postslist | reverse %}
+<li class="postslist-item {% if post.url == url %} postslist-item-active{% endif %}{% if post.data.starred %} starred{% endif %}">
+	<a href="{{ post.url }}">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
+</li>
+{%- endfor %}
+</ol>

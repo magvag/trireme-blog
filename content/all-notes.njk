@@ -1,0 +1,10 @@
+---js
+const permalink = "/notes/all/";
+const title = "Все заметки списком · {{ metadata.title }}";
+---
+{% set postsCount = collections.posts | length %}
+<div class="postslist-container unvisitable">
+{% include "_includes/n-zametok.njk" %}
+<a href="/tags/">по всем тегам</a></div>
+{% set postslist = collections.posts %}
+{% include "postslist.njk" %}

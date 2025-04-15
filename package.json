@@ -1,0 +1,73 @@
+{
+	"name": "eleventy-base-blog",
+	"version": "9.0.0",
+	"description": "A starter repository for a blog web site using the Eleventy site generator.",
+	"type": "module",
+	"scripts": {
+		"build": "npx @11ty/eleventy",
+		"build-nocolor": "cross-env NODE_DISABLE_COLORS=1 npx @11ty/eleventy",
+		"build-ghpages": "npx @11ty/eleventy --pathprefix=/eleventy-base-blog/",
+		"start": "npx @11ty/eleventy --serve --quiet",
+		"start-ghpages": "npx @11ty/eleventy --pathprefix=/eleventy-base-blog/ --serve --quiet",
+		"debug": "cross-env DEBUG=Eleventy* npx @11ty/eleventy",
+		"debugstart": "cross-env DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
+		"benchmark": "cross-env DEBUG=Eleventy:Benchmark* npx @11ty/eleventy"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/11ty/eleventy-base-blog.git"
+	},
+	"author": {
+		"name": "Zach Leatherman",
+		"email": "zachleatherman@gmail.com",
+		"url": "https://zachleat.com/"
+	},
+	"license": "MIT",
+	"engines": {
+		"node": ">=18"
+	},
+	"funding": {
+		"type": "opencollective",
+		"url": "https://opencollective.com/11ty"
+	},
+	"bugs": {
+		"url": "https://github.com/11ty/eleventy-base-blog/issues"
+	},
+	"homepage": "https://github.com/11ty/eleventy-base-blog#readme",
+	"devDependencies": {
+		"@11ty/eleventy": "^3.0.0",
+		"@11ty/eleventy-img": "^6.0.1",
+		"@11ty/eleventy-navigation": "^0.3.5",
+		"@11ty/eleventy-plugin-rss": "^2.0.2",
+		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+		"cross-env": "^7.0.3",
+		"luxon": "^3.5.0",
+		"prismjs": "^1.29.0",
+		"zod": "^3.23.8",
+		"zod-validation-error": "^3.3.1"
+	},
+	"dependencies": {
+		"@binyamin/markdown-it-wikilinks": "^1.1.1",
+		"@mdit/plugin-attrs": "^0.16.7",
+		"@mdit/plugin-container": "^0.16.0",
+		"@mdit/plugin-figure": "^0.16.6-cjs.0",
+		"@mdit/plugin-icon": "^0.16.5",
+		"@mdit/plugin-img-size": "^0.16.0",
+		"@mdit/plugin-katex": "^0.16.7",
+		"@mdit/plugin-mark": "^0.16.0",
+		"@mdit/plugin-mathjax": "^0.16.0",
+		"@mdit/plugin-spoiler": "^0.16.0",
+		"@zachleat/heading-anchors": "^1.0.1",
+		"gray-matter": "^4.0.3",
+		"hyphenation.en-gb": "^0.2.1",
+		"hyphenation.ru": "^0.2.1",
+		"hyphenopoly": "^6.0.0",
+		"hypher": "^0.2.5",
+		"lodash": "^4.17.21",
+		"lodash-es": "^4.17.21",
+		"markdown-it-attrs": "^4.3.1",
+		"markdown-it-image-figures": "^2.1.1",
+		"markdown-it-obsidian": "^1.1.0",
+		"parse5": "^7.2.1"
+	}
+}
