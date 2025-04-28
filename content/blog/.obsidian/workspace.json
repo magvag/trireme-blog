@@ -51,12 +51,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "walled-gardens.md",
+                "file": "performance.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "walled-gardens"
+              "title": "performance"
             }
           },
           {
@@ -137,7 +137,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "walled-gardens.md",
+                "file": "performance.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -147,7 +147,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for walled-gardens"
+              "title": "Backlinks for performance"
             }
           },
           {
@@ -210,6 +210,7 @@
   },
   "active": "3ccb4864faabd896",
   "lastOpenFiles": [
+    "walled-gardens.md",
     "to-the-web.md",
     "performance.md",
     "pagination.md",
@@ -225,7 +226,6 @@
     "end-mark.md",
     "11ty-preprocessors.md",
     "11ty-images.md",
-    "walled-gardens.md",
     "media/zed-editor-screenshot.png",
     "media/winscp-sync.png",
     "media/u-got-banned.png",
