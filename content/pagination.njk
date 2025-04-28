@@ -1,5 +1,5 @@
 ---js
-const posts_per_page = 15;
+const posts_per_page = 25;
 
 const pagination = {
 	data: "collections.posts",
@@ -10,7 +10,7 @@ const pagination = {
 const eleventyExcludeFromCollections = true;
 
 const eleventyComputed = {
-		title: "{% if pagination.pageNumber < pagination.pages.length - 1 %}Страница {{ pagination.pageNumber + 1}} ·{% endif %}{{metadata.title}}",
+		title: "{% if pagination.pageNumber < pagination.pages.length - 1 %}Страница {{ pagination.pageNumber + 1}} · {% endif %}{{ metadata.blog_homepage_name }} · {{metadata.title}}",
 		permalink: "{{ metadata.blog_homepage }}{% if pagination.pageNumber < pagination.pages.length - 1 %}{{ pagination.pageNumber + 1}}/{% endif %}"
 }
 
@@ -18,7 +18,12 @@ const eleventyComputed = {
 
 {% if pagination.pageNumber === pagination.pages.length - 1%}{% set postslist = collections.posts.slice(-(pagination.items.length + posts_per_page)) %}{% else %}{% set postslist = pagination.items %}{% endif %}
 
-{% set postslistCounter = postsCount %}
+{% set postsCount = collections.posts | length %}
+
+<div class="postslist-container unvisitable">
+<h1 class="postslist-header">{{metadata.blog_homepage_name}}</h1>
+<a href="{{metadata.blog_homepage}}all/">Все {% include "_includes/n-zametok.njk" %} списком</aф></div>
+
 {% include "postspreviews.njk" %}
 <ul class="links-nextprev unvisitable">
 	<li class="links-nextprev-prev">{%- if pagination.page.next %}Ctrl+←<br> {%- if pagination.pageNumber !== pagination.pages.length - 3%}<a href="{{ pagination.page.next.url}}">{% else %}<a href="{{ pagination.page.last.url}}">{% endif %}Позднее</a>{% else %}<p></p>{% endif %}</li>

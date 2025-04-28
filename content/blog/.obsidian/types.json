@@ -6,6 +6,7 @@
     "SSS": "multitext",
     "starred": "checkbox",
     "draft": "checkbox",
-    "date": "text"
+    "date": "text",
+    "taglist": "multitext"
   }
 }

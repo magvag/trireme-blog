@@ -5,9 +5,9 @@
 
 <ul class="linklist post-metadata unvisitable">
 			<li class="post-time linklist-item"><time  datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time></li>
-			{%- for posttag in taglist | filterTagList %}
-			{% set tagUrl %}/tags/{{ posttag | slugify }}/{% endset %}
-			<li class="post-tag underline linklist-item {% if tag.name and tag.name == posttag %}highlighted{% endif %}
-				"><a href="{{ tagUrl }}">{{ posttag }}</a>{%- if not loop.last %}{% endif %}</li>
+			{%- for posttag in taglist | filterTagList | sortAlphabetically %}
+			{% set tagUrl %}/tags/{{ posttag | taglink | slugify }}/{% endset %}
+			<li class="post-tag underline linklist-item {% if tag.name and tag.name == posttag %} highlighted underline {% endif %}">
+				{% if tag.name and tag.name == posttag %}<span>{{ posttag }}</span>{% else %}<a href="{{ tagUrl }}">{{ posttag }}</a>{% endif %}</li>
 			{%- endfor %}
 		</ul>

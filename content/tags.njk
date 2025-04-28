@@ -1,14 +1,17 @@
+---js
+const eleventyComputed = {
+title: "Теги · {{metadata.title}}",
+};
 ---
-title: Теги · {{metadata.title}}
----
-<h1>Теги</h1>
+<div class="postslist-container unvisitable" style="margin-bottom: 1.5rem;">
+<h1 class="postslist-header">Все теги</h1></div>
 {% set topCounts = collections.tags | topTagCounts %}
-{% set minTopCount = topCounts | min%}
+{% set minTopCount = topCounts | min %}
 
 <ul class="linklist taglist">
   {% for tagObj in collections.tags %}
     {% set tagName = tagObj.tag %}
-    {% set tagUrl = "/tags/" + (tagName | slugify) + "/" %}
+    {% set tagUrl = "/tags/" + (tagName | taglink | slugify) + "/" %}
     {% set tagCount = tagObj.items.length %}
     <li class="linklist-item tag-item{% if tagCount >= minTopCount %} highlighted-item{% endif %}">
       <a href="{{ tagUrl }}">{{ tagName }}</a>

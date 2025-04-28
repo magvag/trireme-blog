@@ -4,67 +4,99 @@
     "type": "split",
     "children": [
       {
-        "id": "4b9ce2385d6513bc",
-        "type": "tabs",
+        "id": "a2e4c6039e399a8e",
+        "type": "split",
         "children": [
           {
-            "id": "c9de6f6e5dfc2218",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "markdown-syntax.md",
-                "mode": "source",
-                "source": false
+            "id": "4b9ce2385d6513bc",
+            "type": "tabs",
+            "dimension": 70.22160664819944,
+            "children": [
+              {
+                "id": "c9de6f6e5dfc2218",
+                "type": "leaf",
+                "state": {
+                  "type": "empty",
+                  "state": {},
+                  "icon": "lucide-file",
+                  "title": "New tab"
+                }
               },
-              "icon": "lucide-file",
-              "title": "markdown-syntax"
-            }
+              {
+                "id": "5ea5692858b44f64",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "first-setup.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "first-setup"
+                },
+                "group": "201b2b804fd1bf9a"
+              },
+              {
+                "id": "b1216308647a0279",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "to-the-web.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "to-the-web"
+                }
+              },
+              {
+                "id": "400aee451e093fb6",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "pagination.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "pagination"
+                }
+              }
+            ],
+            "currentTab": 2
           },
           {
-            "id": "ea0bb6823b8f750f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "newnote.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "newnote"
-            }
-          },
-          {
-            "id": "f540062e93fe1305",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "newnote.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "newnote"
-            }
-          },
-          {
-            "id": "4ce1286a062b8591",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "markdown-syntax.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "markdown-syntax"
-            }
+            "id": "62fd6ee5a1e9cbbc",
+            "type": "tabs",
+            "dimension": 29.778393351800553,
+            "children": [
+              {
+                "id": "b39817e0d26dfe60",
+                "type": "leaf",
+                "state": {
+                  "type": "backlink",
+                  "state": {
+                    "file": "first-setup.md",
+                    "collapseAll": false,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical",
+                    "showSearch": false,
+                    "searchQuery": "",
+                    "backlinkCollapsed": false,
+                    "unlinkedCollapsed": true
+                  },
+                  "icon": "links-coming-in",
+                  "title": "Backlinks for first-setup"
+                },
+                "group": "201b2b804fd1bf9a"
+              }
+            ]
           }
         ],
-        "currentTab": 2
+        "direction": "horizontal"
       }
     ],
     "direction": "vertical"
@@ -84,7 +116,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": true
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "File explorer"
@@ -107,7 +139,8 @@
               "title": "Search"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -198,40 +231,49 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "f540062e93fe1305",
+  "active": "b1216308647a0279",
   "lastOpenFiles": [
-    "media/newnote-3.png",
-    "media/newnote-2.png",
-    "media/newnote-1.png",
-    "media/newnote.png",
-    "Untitled.md",
+    "media/to-the-web-1.png",
+    "media/to-the-web.png",
+    "media/winscp-sync.png",
+    "media/publishing-to-web-2.png",
+    "media/publishing-to-web-1.png",
+    "media/publishing-to-web.png",
+    "first-setup.md",
+    "to-the-web.md",
+    "markdown-formatting.md",
+    "markdown-extras.md",
+    "markdown-and-nunjucks.md",
+    "walled-gardens.md",
+    "draft.md",
+    "pagination.md",
     "newnote.md",
-    "markdown-syntax.md",
-    "media/1.1-win-3.png",
-    "media/iiig.png",
+    "media/newnote.png",
+    "media/intro.png",
+    "11ty-images.md",
+    "11ty-preprocessors.md",
+    "media/newnote-2.png",
+    "media/newnote-3.png",
+    "media/newnote-4.png",
+    "Untitled 1.md",
+    "mediateka.md",
+    "end-mark.md",
+    "beautiful-urls.md",
+    "featured-pages.md",
+    "media/A-Note-on-the-Type.pdf",
+    "media/second-atom-bomb-evening-star-front-page.jp2",
+    "11ty-config.md",
+    "forward-to-the-past.md",
+    "media/newnote-6.png.yandex_disk_download_tmp_9klug5sdjh626bbgtlo3h1j3c3",
+    "media/de392687-0120-423c-b71a-b8d3f26985e5.yadisk-drop",
     "fourthpost.md",
     "iiig.md",
-    "Untitled 1.md",
     "Untitled 2.md",
     "Untitled 3.md",
     "Untitled 4.md",
     "dddd.md",
-    "media/iiig-2.png",
-    "media/iiig-1.png",
-    "media/Pasted image 20250408121608.png",
     "nottitled.md",
-    "media/nottitled.png",
-    "media/Untitled.png",
-    "titledpost.md",
-    "wwwwwwwwww.md",
     "media/Formular-Black.otf",
-    "_templates/template.md",
-    "firstpost.md",
-    "fifthpost.md",
-    "thirdpost.md",
-    "secondpost.md",
-    "uuugh.md",
-    "Untitledddd.md",
     "_templates",
     "template"
   ]

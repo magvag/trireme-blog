@@ -10,7 +10,8 @@ function hyphenateText(text, hyphenatorRu, hyphenatorEn) {
 			if (
 				line.startsWith("#") ||
 				line.startsWith("![") ||
-				line.startsWith("[![")
+				line.startsWith("[![") ||
+				line.startsWith("<")
 			) {
 				return line;
 			}

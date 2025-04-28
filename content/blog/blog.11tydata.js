@@ -30,12 +30,18 @@ export default {
 			if (!data.page || !data.page.rawInput) return "";
 			if (data.description) return data.description;
 			const paragraphs = data.page.rawInput.split("\n");
-			if (paragraphs.length === 1) {
+			const validParagraphs = paragraphs.filter(
+				(p) =>
+					!p.trim().startsWith("![") &&
+					!p.trim().startsWith("|") &&
+					!p.trim().startsWith("#") &&
+					p.trim().length > 0 &&
+					!p.trim().startsWith(" "),
+			);
+			if (validParagraphs.length === 1) {
 				data.short = true;
 			}
-			const firstValidParagraph = paragraphs.find(
-				(p) => !p.trim().startsWith("![") && !p.trim().startsWith("|"),
-			);
+			const firstValidParagraph = validParagraphs[0];
 			return await this.renderTemplate(firstValidParagraph || "", "md");
 		},
 	},

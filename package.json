@@ -68,6 +68,7 @@
 		"markdown-it-attrs": "^4.3.1",
 		"markdown-it-image-figures": "^2.1.1",
 		"markdown-it-obsidian": "^1.1.0",
+		"netlify-plugin-cache": "^1.0.3",
 		"parse5": "^7.2.1"
 	}
 }

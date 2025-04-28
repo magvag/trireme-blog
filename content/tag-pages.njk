@@ -5,7 +5,7 @@ const pagination = {
   alias: "tag",
   before: function (tagsArray) {
         let ret = [];
-        const subPageSize = 15;
+        const subPageSize = 25;
 
         // Each item in tagsArray is now an object { tag, items }
         tagsArray.forEach(tagObj => {
@@ -44,17 +44,17 @@ const eleventyExcludeFromCollections = true;
 const eleventyComputed = {
 	title: "Тег: {{ tag.name }} · {{metadata.title}}",
 	permalink: function(data) {
-		return `/tags/${this.slugify(data.tag.name)}/{% if tag.pageNumber !== tag.totalPages %}{{ tag.pageNumber }}/{% endif %}`;
+		return `/tags/{{ tag.name | taglink | slugify}}/{% if tag.pageNumber !== tag.totalPages %}{{ tag.pageNumber }}/{% endif %}`;
 	},
  nextURL: function(data) {
     const pageNumber = data.tag.pageNumber;
     const totalPages = data.tag.totalPages;
 
     if (pageNumber == totalPages - 1) {
-      return `/tags/${this.slugify(data.tag.name)}/`;
+      return `/tags/{{ tag.name | taglink | slugify}}/`;
     }
     if (pageNumber < totalPages) {
-      return `/tags/${this.slugify(data.tag.name)}/${pageNumber + 1}/`;
+      return `/tags/{{ tag.name | taglink | slugify}}/${pageNumber + 1}/`;
     }
     return null;
 
@@ -73,7 +73,9 @@ const eleventyComputed = {
 ---
 {% set postslist = tag.items %}
 {% set postsCount = postslist | length %}
-<h1>Тег: {{ tag.name }}</h1>
+<div class="postslist-container unvisitable">
+<h1 class="postslist-header">Тег: {{ tag.name }}</h1>
+<p>{% include "_includes/n-zametok.njk" %}</p></div>
 {% set postslistCounter = postsCount %}
 {% include "postspreviews.njk" %}
 

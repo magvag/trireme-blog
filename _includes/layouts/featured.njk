@@ -1,0 +1,39 @@
+{#-
+In case you ever need some custom fonts and styles for your project or feature story
+* Add your custom fonts and styles here
+* Set layout to be layouts/feature.njk in your project's file (layout: layouts/feature.njk in frontmatter)
+* Or create a project folder, set layout in folder.11tydata.js and write folder/project.md as usual
+ #}
+
+
+{% extends "layouts/base.njk" %}
+
+{%- block preload %}
+<link rel="preload" href="/fonts/PTSansRegular.woff2" as="font" type="font/woff2" crossorigin="">
+<link rel="preload" href="/fonts/PTSansCaptionRegular.woff2" as="font" type="font/woff2" crossorigin="">
+{% endblock %}
+
+{%- block extracss %}
+{%- css %}{% include "public/css/featured.css" %}{%- endcss %}
+{% endblock %}
+
+
+{%- block beforeContent %}
+<article>
+{% endblock %}
+
+{{ content | safe  }}
+
+{%- block afterContent %}
+</article>
+{%- if collections.posts %}
+{%- set previousPost = collections.posts | getPreviousCollectionItem %}
+{%- set nextPost = collections.posts | getNextCollectionItem %}
+{%- if nextPost or previousPost %}
+<ul class="links-nextprev unvisitable">
+	<li class="links-nextprev-prev">{%- if nextPost %}Ctrl+←<br> <a href="{{ nextPost.url }}">{% if nextPost.data.title %}{{ nextPost.data.title }}{% else %}<code>{{ nextPost.url }}</code>{% endif %}</a>{% else %}<p></p>{% endif %}</li>
+	<li class="links-nextprev-next">{%- if previousPost %}Ctrl+→<br><a href="{{ previousPost.url }}">{% if previousPost.data.title %}{{ previousPost.data.title }}{% else %}<code>{{ previousPost.url }}</code>{% endif %}</a>{% else %}<p></p>{% endif %}</li>
+</ul>
+{%- endif %}
+{%- endif %}
+{% endblock %}

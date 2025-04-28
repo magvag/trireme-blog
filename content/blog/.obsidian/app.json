@@ -6,7 +6,7 @@
   "smartIndentList": true,
   "promptDelete": false,
   "livePreview": true,
-  "defaultViewMode": "preview",
+  "defaultViewMode": "source",
   "strictLineBreaks": false,
   "useTab": true,
   "showLineNumber": true

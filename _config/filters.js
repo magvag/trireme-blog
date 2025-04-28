@@ -1,4 +1,5 @@
 import { DateTime } from "luxon";
+import metadata from "../_data/metadata.js";
 
 export default function (eleventyConfig) {
 	eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
@@ -36,6 +37,16 @@ export default function (eleventyConfig) {
 		return DateTime.fromJSDate(dateObj, { zone: zone || "utc" })
 			.setLocale("ru")
 			.toFormat(format || "MMM yyyy");
+	});
+
+	eleventyConfig.addFilter("taglink", function (posttag) {
+		const found = (metadata.tag_links || []).find(
+			(link) => link.name === posttag,
+		);
+		if (found) {
+			return found.url;
+		}
+		return posttag; // fallback to raw tag (or slugify if you want)
 	});
 
 	eleventyConfig.addFilter("pretty", function (content) {

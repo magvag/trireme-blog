@@ -12,18 +12,11 @@ const eleventyComputed = {
 {% for post in collections.posts %}
 {% set images = post.data.media | imagesOnly | sortAlphabetically %}
 {% if images.length > 0 %}
-	<div class="mediateka-grid-item image-item with-title unvisitable">
-	 <div class='post-title-block'>
-			<a href="{{ post.url }}">{{ post.data.title }}</a>
-		</div>
-		<div class="image-item">
-			<a href="/media/{{ images[0] }}">
-			{% image "./content/blog/media/" + images[0], images[0], {height: 160} %}
-			</a>
-		</div>
-		</div>
-		{% for file in images.slice(1) %}
+{% for file in images %}
 			<div class="mediateka-grid-item image-item unvisitable">
+			 <div class='post-title-block'>
+					<a href="{{ post.url }}">#</a>
+				</div>
 				<a href="/media/{{ file }}">
 				{% image "./content/blog/media/" + file, file, {height: 160} %}
 				</a>
@@ -38,8 +31,8 @@ const eleventyComputed = {
 	{% set nonImages = post.data.media | nonImages | sortAlphabetically %}
 	{% if nonImages.length > 0 %}
 		{% for file in nonImages %}
-			<li class='linklist-item'>
-				<a href="/media/{{ file }}">{{ file }}</a>
+			<li class='linklist-item unvisitable'>
+				<a href="/media/{{ file }}">{{ file }}</a><a class="post-url-anchor" href="{{post.url}}"> #</a>
 			</li>
 		{% endfor %}
 	{% endif %}

@@ -1,19 +1,32 @@
 function formatImages(content) {
 	const imageRegex =
-		/(?:\[)?!\[([^\]|]*?)(?:\|(\d+(?:x\d+)?))?\]\(([^)]+?\.(?:png|jpe?g|gif|webp|svg))\)(?:\]\([^)]+?\))?(?: (.+))?/gm;
+		/!\[([^\]|]*?)(?:\|(\d+(?:x\d+)?))?\]\(([^)\s]+?\.(?:png|jpe?g|gif|webp|svg))\)(?:[ \t]*(\{[^}]*\}))?(?:[ \t]+([^ \t\n][^\n{]*))?(?=\s|\n|$)/gm;
+
 	return content.replace(
 		imageRegex,
-		(match, alt, size, path, caption, offset) => {
-			// Make alt empty string if it's undefined or numeric
-			alt = !alt || /^\d+(?:x\d+)?$/.test(alt) ? '""' : alt.trim();
+		(match, alt, size, path, rawAttrs, trailingCaption, offset) => {
+			// 1) Normalize alt
+			alt = !alt || /^\d+(?:x\d+)?$/.test(alt) ? "" : alt.trim();
 
-			if (alt.toLowerCase().startsWith("figure")) {
-				caption = " ";
+			// 2) Extract attrs
+			const attributes = rawAttrs ? rawAttrs.trim() : "";
+
+			// 3) Determine caption: prefer trailingCaption, else invisible if needed
+			let caption = trailingCaption?.trim() || "";
+			if (
+				alt.toLowerCase().startsWith("figure") ||
+				!caption ||
+				caption === ""
+			) {
+				caption = "<span></span>";
 			}
 
-			const lineStart = content.lastIndexOf("\n", offset) + 1;
-			const textBefore = content.substring(lineStart, offset).trim();
-
+			// 4) Build size string (double for retina)
+			let sizeStr = "";
+			if (size) {
+				const [w, h = w] = size.split("x").map(Number);
+				sizeStr = ` =${w * 2}x${h * 2}`;
+			}
 			const processedPath =
 				!path.startsWith("http") &&
 				!path.startsWith("/") &&
@@ -21,45 +34,41 @@ function formatImages(content) {
 					? `media/${path.trim()}`
 					: path.trim();
 
-			let sizeStr = "";
-			if (size) {
-				const [width, height = width] = size.split("x");
-				sizeStr = ` =${width}x${height}`;
-			}
-
-			const captionStr = !textBefore && caption ? ` '${caption}'` : "";
-
+			// 5) Reconstruct Markdown: always quote caption if present
+			const captionStr = caption ? ` '${caption}'` : "";
 			let result = `![${alt}](${processedPath}${captionStr}${sizeStr})`;
 
-			// Handle wrapped links
-			if (match.startsWith("[")) {
-				const linkMatch = match.match(/\]\(([^)]+?)\)$/);
-				if (linkMatch) {
-					result = `[${result}](${linkMatch[1]})`;
-				}
-			}
-
+			// 6) Append attrs **after** the closing ")"
+			if (attributes) result += attributes;
 			return result;
 		},
 	);
 }
 
 function formatFiles(content) {
-	const fileRegex = /\[([^\]]+?)\]\((?!https?:\/\/)([^)]+\.[a-zA-Z0-9]+)\)/g;
+	const fileRegex = /\[([^\]]+?)\]\((?!https?:\/\/)([^)]+)\)/g;
 
 	return content.replace(fileRegex, (match, text, filepath) => {
-		if (
-			filepath.toLowerCase().endsWith(".md") ||
-			filepath.toLowerCase().endsWith(".njk")
-		) {
+		const lowerPath = filepath.toLowerCase();
+
+		// Skip markdown or nunjucks files
+		if (lowerPath.endsWith(".md") || lowerPath.endsWith(".njk")) {
 			return match;
 		}
+
+		// If the path has no extension, treat it as a note and prepend "/"
+		if (!/\.[a-zA-Z0-9]+$/.test(filepath)) {
+			return `[${text.trim()}](/${filepath.trim()})`;
+		}
+
+		// Otherwise, handle media paths
 		const isExternal = filepath.startsWith("http") || filepath.startsWith("/");
 		const processedPath = isExternal
 			? filepath
 			: filepath.startsWith("media/")
 				? "/" + filepath
 				: `/media/${filepath.trim()}`;
+
 		return `[${text.trim()}](${processedPath})`;
 	});
 }

@@ -1,6 +1,6 @@
 <!doctype html>
 		<!-- Эта страница `{{ page.url }}` была собрана {% currentBuildDate %} -->
-		<!-- Движок: 11ty, тема: Трирема v1.0 -->
+		<!-- Движок: 11ty, тема: Трирема -->
 <html lang="{{ metadata.language }}">
 	<head>
 		<meta charset="utf-8">
@@ -11,10 +11,18 @@
 		<link rel="icon" href="/assets/favicon.svg" sizes="any" type="image/svg+xml">
 		<link rel="icon" href="/assets/favicon.png" sizes="32x32">
 
+    <link rel="preload" href="/assets/avatar.png" as="image" type="image/png" crossorigin="">
+
+    {#-
+    совет: если ваш сайт на Нетлифай, вам не нужны скрипты метрик/аналитик.
+    скрипты ухудшают перформанс, нифига не этичны и требуют согласия о куках,
+    Нетлифай-аналитика запросов к серверу анонимна: https://docs.netlify.com/monitor-sites/site-analytics/how-site-analytics-works/#}
+
+    {% block preload %}
     <link rel="preload" href="/fonts/CommissionerRegular.woff2" as="font" type="font/woff2" crossorigin="">
     <link rel="preload" href="/fonts/CommissionerBoldFlair.woff2" as="font" type="font/woff2" crossorigin="">
     <link rel="preload" href="/fonts/CommissionerItalic.woff2" as="font" type="font/woff2" crossorigin="">
-    <link rel="preload" href="/assets/avatar.png" as="image" type="image/png" crossorigin="">
+    {% endblock %}
 
 		{#-
 		Plain-text bundles are provided via the `eleventy-plugin-bundle` plugin:
@@ -29,9 +37,12 @@
 
 		{#- Add an arbitrary string to the bundle #}
 		{%- css %}/* This is an arbitrary CSS string added to the bundle */{% endcss %}
+
 		{#- Add the contents of a file to the bundle #}
 		{%- css %}{% include "public/css/default.css" %}{% endcss %}
 		{%- css %}{% include "public/css/custom.css" %}{% endcss %}
+		{% block extracss %}{% endblock %}
+
 		{#- Or you can add from node_modules #}
 		{# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
 
@@ -78,13 +89,18 @@
 
 		<main id="skip">
 			<heading-anchors>
+				{% block beforeContent %}{% endblock %}
+
 				{{ content | safe }}
+
+				{% block afterContent %}{% endblock %}
 			</heading-anchors>
 		</main>
 
 		<footer class='unvisitable'>
 			<p class="footer-text">© {{ metadata.author.name }}, {{ metadata.blog_foundation }}{#–{% year %} #}<br>
-			<a href="/rss/">РСС,</a> <a href="https://t.me/magmoyed">телеграм-канал</a></p>
+			<a href="/rss/">РСС,</a> <a href="https://t.me/magmoyed">телеграм-канал</a><br>
+				Есть вопросы по Триреме? Пишите: <a href="https://t.me/magvag">@magvag</a></p>
 			<p class="footer-built"> Сделано на <a href="https://trireme.magvag.ru/">Триреме</a></p>
 
 		</footer>

@@ -5,10 +5,10 @@ layout: layouts/base.njk
 {# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
 {# {%- css %}{% include "public/css/prism-diff.css" %}{%- endcss %} #}
 
-<ul class="linklist post-metadata">
+<ul class="linklist post-metadata unvisitable">
 	<li class="post-time linklist-item"><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></li>
 	{%- for tag in taglist | filterTagList %}
-	{% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+	{% set tagUrl %}/tags/{{ tag | taglink | slugify }}/{% endset %}
 	<li class="post-tag underline linklist-item"><a href="{{ tagUrl }}">{{ tag }}</a>{%- if not loop.last %}{% endif %}</li>
 	{%- endfor %}
 </ul>
@@ -18,7 +18,7 @@ layout: layouts/base.njk
 
 
 
-{{ content | pretty | safe  }}
+{{ content | safe  }}
 
 </article>
 {%- if collections.posts %}

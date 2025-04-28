@@ -27,8 +27,6 @@ import { OK } from "zod";
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default async function (eleventyConfig) {
-	eleventyConfig.addPlugin(taglistForTags);
-
 	// Drafts, see also _data/eleventyDataSchema.js
 	eleventyConfig.addPreprocessor("drafts", "*", (data, content) => {
 		if (data.draft && process.env.ELEVENTY_RUN_MODE === "build") {
@@ -36,18 +34,20 @@ export default async function (eleventyConfig) {
 		}
 	});
 
+	eleventyConfig.addPlugin(taglistForTags);
+
 	// Filters
 	eleventyConfig.addPlugin(pluginFilters);
 
 	eleventyConfig.addPlugin(hyphenatorPlugin);
 	eleventyConfig.addPlugin(imageFormat);
 
-	eleventyConfig.addPreprocessor("nbspEmDash", "*", (data, content) => {
+	eleventyConfig.addPreprocessor("nbspEmDash", "md", (data, content) => {
 		// Replace " —" (regular space + em dash) with non-breaking space + em dash
 		return content.replace(/\u0020—/g, "\u00A0—");
 	});
 
-	eleventyConfig.addPreprocessor("nbspPrepositions", "*", (data, content) => {
+	eleventyConfig.addPreprocessor("nbspPrepositions", "md", (data, content) => {
 		// Replace short Russian prepositions followed by a space with non-breaking space
 		return content.replace(
 			/ (?:(в|во|к|с|у|о|об|обо|на|над|по|под|для|до|из|от|при|не|и|но|а|как)) /giu,
@@ -121,7 +121,7 @@ export default async function (eleventyConfig) {
 	// Image optimization: https://www.11ty.dev/docs/plugins/image/#eleventy-transform
 	eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
 		// Output formats for each image.
-		formats: ["jpeg", "webp", "auto"],
+		formats: ["png", "jpeg", "webp", "auto"],
 
 		widths: ["auto"],
 		outputDir: "./_site/media/",
@@ -131,7 +131,7 @@ export default async function (eleventyConfig) {
 			const extension = path.extname(src); // Get original file extension
 			const name = path.basename(src, extension); // Get filename without extension
 
-			return `${name})_width${width}.${format}`;
+			return `${name}_width${width}.${format}`;
 		},
 
 		failOnError: false,
@@ -192,6 +192,23 @@ export default async function (eleventyConfig) {
 		}
 		return content;
 	});
+
+	eleventyConfig.addTransform(
+		"halve-image-dimensions",
+		(content, outputPath) => {
+			if (outputPath && outputPath.endsWith(".html")) {
+				return content.replace(
+					/<img([^>]*?)\swidth="(\d+)"\sheight="(\d+)"([^>]*?)>/g,
+					(_, pre, width, height, post) => {
+						const halfWidth = Math.round(Number(width) / 2);
+						const halfHeight = Math.round(Number(height) / 2);
+						return `<img${pre} width="${halfWidth}" height="${halfHeight}"${post}>`;
+					},
+				);
+			}
+			return content;
+		},
+	);
 	// Features to make your build faster (when you need them)
 
 	// If your passthrough copy gets heavy and cumbersome, add this line

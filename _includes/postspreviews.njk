@@ -5,16 +5,16 @@
 	{% set images = post.data.media | imagesOnly %}
 	{% if images.length  > 0 %}
 	<div class="scrollable">
-		<a href="{{ post.url }}">
 		<div class="image-grid scrollable__in js-scrollable">
 			{% for file in images %}
 					<div class="image-item">
-					{% set thumbnail = "/media/" + file | removeExtension + "_thumbnail.jpeg" %}
-					<img src="{{ thumbnail }}" alt="{{ file | removeExtension }}" height="80px" eleventy:ignore>
+						<a href="{{ post.url }}">
+						{% set thumbnail = "/media/" + file | removeExtension + "_thumbnail.jpeg" %}
+						<img src="{{ thumbnail }}" alt="{{ file | removeExtension }}" height="80px" eleventy:ignore>
+						</a>
 					</div>
 		{% endfor %}
 		</div>
-		</a>
 	</div>
 	{% endif %}
 		<h1 class="preview-title unvisitable {% if post.data.starred %}starred{% endif %}">

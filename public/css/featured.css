@@ -1,0 +1,72 @@
+@font-face {
+	font-family: "PT Sans";
+	src: url("/fonts/PTSansRegular.woff2") format("woff2");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "PT Sans Caption";
+	src: url("/fonts/PTSansCaptionRegular.woff2") format("woff2");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+:root {
+	--font-family: "PT Sans", -apple-system, system-ui, sans-serif;
+	--font-family-monospace: "PT Mono", Consolas, Menlo, Monaco, monospace;
+	--font-family-caption: "PT Sans Caption", -apple-system, system-ui, sans-serif;
+}
+
+:root {
+	--background-color: #d5d946;
+	--text-color: #000;
+	--text-color-header: #000;
+	--text-color-highlight: #000;
+	--text-color-link: #000;
+	--text-color-link-active: #fff;
+	--text-color-link-visited: #494949;
+
+	--font-size-text: 1.25rem;
+	--font-size-caption: 0.825rem;
+
+	--article-width: 35rem;
+	--sidenote-margin: 3rem;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background-color: #d5d946;
+		--text-color: #000;
+		--text-color-header: #000;
+		--text-color-highlight: #000;
+		--text-color-link: #000;
+		--text-color-link-active: #fff;
+		--text-color-link-visited: #494949;
+	}
+}
+
+h1,
+h2,
+h3 {
+	font-style: normal;
+	font-weight: normal;
+	letter-spacing: -0.05rem;
+}
+
+h1 {
+	font-size: 4rem;
+	line-height: 0.9;
+}
+
+code {
+	font-size: 100%;
+}
+
+@media screen and (min-width: 30rem) {
+	.window {
+		outline: 1.5px solid #fff;
+	}
+}

@@ -9,12 +9,17 @@
 	--text-color-link-visited: #b24bab;
 	--text-color-accent: #f84890;
 	--background-color-highlight: color-mix(in srgb, #ffe300, transparent 50%);
+	--spoiler-color: #a6aed7;
+	--code-background: color-mix(in srgb, var(--text-color), transparent 95%);
 
+	--font-size-text: 1.125rem;
+	--font-size-caption: 0.825rem;
 	--syntax-tab-size: 2;
-	--window-border: #c4c4e3;
 	--article-width: 48rem;
-	--sidenote-margin: 2rem;
+	--sidenote-margin: 3rem;
 	--transparency-underline: 80%;
+	--star-mark: "♥";
+	--end-mark: "❦";
 }
 
 @media (prefers-color-scheme: dark) {
@@ -31,4 +36,12 @@
 		--background-color-highlight: #ffea78;
 		--transparency-underline: 40%;
 	}
-} */
+}
+
+:root {
+	--font-family: "Commissioner", -apple-system, system-ui, sans-serif;
+	--font-family-monospace: "PT Mono", Consolas, Menlo, Monaco, monospace;
+	--font-family-caption: "Commissioner", -apple-system, system-ui, sans-serif;
+}
+
+*/
