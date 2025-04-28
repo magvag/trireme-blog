@@ -174,7 +174,7 @@ export default async function (eleventyConfig) {
 			return `
 						<figure>
 								<picture>
-									<img src="${imageMetadata.jpeg[0].url}" alt="${alt}" height="${height}" width="${calculatedWidth}" loading="lazy" decoding="async">
+									<img src="${imageMetadata.webp[0].url}" alt="${alt}" height="${height}" width="${calculatedWidth}" loading="lazy" decoding="async">
 								</picture>
 							<figcaption style="width: ${calculatedWidth / 2}px">${path.basename(src)}</figcaption>
 						</figure>

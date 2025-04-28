@@ -10,7 +10,7 @@ const eleventyComputed = {
 <h1>Медиатека</h1>
 <div class="mediateka-grid image-grid">
 {% for post in collections.posts %}
-{% set images = post.data.media | imagesOnly | sortAlphabetically %}
+{% set images = post.data.media | imagesOnly %}
 {% if images.length > 0 %}
 {% for file in images %}
 			<div class="mediateka-grid-item image-item unvisitable">
