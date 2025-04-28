@@ -1,6 +1,8 @@
 ---js
 const permalink = "/{{metadata.blog_homepage}}/all/";
-const title = "Все заметки списком · {{ metadata.title }}";
+const eleventyComputed = {
+	const title = "Все заметки списком · {{ metadata.title }}";
+}
 ---
 
 {% set postsCount = collections.posts | length %}

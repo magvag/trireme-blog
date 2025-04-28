@@ -163,7 +163,7 @@ export default async function (eleventyConfig) {
 
 			const imageMetadata = await Image(src, {
 				widths: [calculatedWidth],
-				formats: ["jpeg"],
+				formats: ["webp"],
 				returnType: "metadata",
 				outputDir: "./_site/media/",
 				urlPath: "./../media/",

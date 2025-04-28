@@ -1,7 +1,7 @@
 ---
 title: Красивые ссылки
 description: 
-date: 2025-04-25
+date: 2025-03-09
 taglist:
   - фичи
 draft: 

@@ -721,26 +721,10 @@ figcaption,
 	height: 1.4em;
 }
 
-/* CUSTOM CLASSES */
-
-@media screen and (min-width: 30rem) {
-	.window {
-		border-radius: 5.5px;
-		outline: 1.5px solid #c4c4e3;
-		outline-offset: -1.3px;
-	}
+figcaption {
+	margin-bottom: 1.3rem;
 }
 
-.giant .possum {
-	font-size: inherit;
-	margin-bottom: -0.41rem;
-}
-
-.avatar {
-	width: 45px;
-	height: 45px;
-	border-radius: 50%;
-}
 
 .linklist-item {
 	white-space: collapse;
@@ -858,14 +842,6 @@ figure + :is(h1, h2, h3, h4, h5, h6) {
 	margin-top: -0.5rem;
 }
 
-/* .glued-pic {
-	padding-top: 0;
-	margin-bottom: -1.1rem;
-} */
-
-figcaption {
-	margin-bottom: 1.3rem;
-}
 
 footer {
 	display: flex;
@@ -885,6 +861,33 @@ footer {
 	color: var(--text-color);
 }
 
+/* CUSTOM CLASSES */
+
+@media screen and (min-width: 30rem) {
+	.window {
+		border-radius: 5.5px;
+		outline: 1.5px solid #c4c4e3;
+		outline-offset: -1.3px;
+	}
+}
+
+.giant .possum {
+	font-size: inherit;
+	margin-bottom: -0.41rem;
+}
+
+.avatar {
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+}
+
+/* .glued-pic {
+	padding-top: 0;
+	margin-bottom: -1.1rem;
+} */
+
+
 .flower {
 	mask: url(/assets/flower-sakura.svg);
 }
@@ -899,6 +902,12 @@ footer {
 	margin-bottom: 0.2rem;
 	line-height: 0.9;
 	letter-spacing: -0.2rem;
+}
+
+@media (max-width: 30rem) {
+	.giant {
+		font-size: 4rem;
+	}
 }
 
 .bold {

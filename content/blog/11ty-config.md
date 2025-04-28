@@ -1,7 +1,7 @@
 ---
 title: Как конфигурировать 11ty
 description: Если вы хотите беспощадно закастомизировать Трирему, вам придётся открыть eleventy.config.js и разобраться, чем Preprocessor отличается от Filter и Transform и в каком порядке их расставлять.
-date: 2025-04-24
+date: 2025-03-09
 taglist:
   - 11ty
 draft: 

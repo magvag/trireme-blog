@@ -9,7 +9,7 @@
 			{% for file in images %}
 					<div class="image-item">
 						<a href="{{ post.url }}">
-						{% set thumbnail = "/media/" + file | removeExtension + "_thumbnail.jpeg" %}
+						{% set thumbnail = "/media/" + file | removeExtension + "_thumbnail.webp" %}
 						<img src="{{ thumbnail }}" alt="{{ file | removeExtension }}" height="80px" eleventy:ignore>
 						</a>
 					</div>

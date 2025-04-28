@@ -52,10 +52,9 @@
 		<link rel="stylesheet" href="{% getBundleFileUrl "css" %}">
 
 
-		{#- Add the heading-anchors web component to the JavaScript bundle #}
-		{%- js %}{% include "node_modules/@zachleat/heading-anchors/heading-anchors.js" %}{% endjs %}
 		{%- js %}{% include "public/scripts/keyboard-nav.js" %}{% endjs %}
 		{%- js %}{% include "public/scripts/scrollable.js" %}{% endjs %}
+		{%- js %}{% include "node_modules/@zachleat/heading-anchors/heading-anchors.js" %}{% endjs %}
 		<script src="{% getBundleFileUrl "js" %}"></script>
 	</head>
 	<body>
