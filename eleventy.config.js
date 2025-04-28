@@ -121,7 +121,7 @@ export default async function (eleventyConfig) {
 	// Image optimization: https://www.11ty.dev/docs/plugins/image/#eleventy-transform
 	eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
 		// Output formats for each image.
-		formats: ["png", "jpeg", "webp", "auto"],
+		formats: ["jpeg", "webp", "auto"],
 
 		widths: ["auto"],
 		outputDir: "./_site/media/",

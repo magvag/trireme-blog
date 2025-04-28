@@ -23,7 +23,7 @@ function hyphenateText(text, hyphenatorRu, hyphenatorEn) {
 						word.match(/[-]+/) ||
 						word.match(/::.*::/) ||
 						word.match(/{.*}/) ||
-						word.match(/[#.][\w-]+/) || // matches .something or #something
+						word.match(/[#.][.*]+/) || // matches .something or #something
 						word.match(/^\w+=/) // matches something=
 					) {
 						return word;

@@ -236,6 +236,10 @@ article h1.starred::after {
 	margin-left: 0.5rem;
 }
 
+li.starred::after {
+	margin-left:0.2rem;
+}
+
 a[href] {
 	color: var(--text-color-link);
 }
