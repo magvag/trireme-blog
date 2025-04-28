@@ -156,8 +156,8 @@ h6 {
 }
 
 p,
-article ul,
-article ol {
+ul,
+ol {
 	font-size: var(--font-size-text);
 	line-height: 1.5;
 	letter-spacing: -0.01rem;
@@ -638,7 +638,7 @@ figcaption,
 		position: absolute;
 		left: calc(2% + var(--article-width));
 		margin-left: var(--sidenote-margin);
-		/* margin-top: .15em; */
+		margin-top: .4em;
 	}
 	.sidenote::after {
 		content: "";
@@ -850,7 +850,6 @@ footer {
 	flex-wrap: wrap;
 }
 .footer-text {
-	min-width: 400px;
 	margin-bottom: 2rem;
 }
 .footer-built {
