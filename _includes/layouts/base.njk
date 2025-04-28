@@ -63,12 +63,12 @@
 			<nav>
 				<h2 class="visually-hidden">Навигация</h2>
 				<div class="nav-container scrollable">
-					<a href="/">
-					<img class="avatar" src="/assets/avatar.webp" alt="" eleventy:ignore>
+					<a href="/" alt="На главную">
+					<img class="avatar"  src="/assets/avatar.webp" alt="На главную" eleventy:ignore>
 					</a>
 					<div class="nav-content scrollable__in">
 						<div class="nav-title unvisitable">
-							<a href="/" alt="На главную" class="site-title{% if page.url == '/' %}current-item{% endif %}">{{ metadata.title }}</a>
+							<a href="/" class="site-title{% if page.url == '/' %}current-item{% endif %}">{{ metadata.title }}</a>
 							<span class="site-description">{{ metadata.shortdescription }}</span>
 						</div>
 							<ul class="linklist">
