@@ -9,7 +9,7 @@ const eleventyComputed = {
 
 <h1>Медиатека</h1>
 <div class="mediateka-grid image-grid">
-{% for post in collections.posts %}
+{% for post in collections.posts | reverse %}
 {% set images = post.data.media | imagesOnly | sortAlphabetically %}
 {% if images.length > 0 %}
 {% for file in images %}
@@ -18,7 +18,7 @@ const eleventyComputed = {
 					<a href="{{ post.url }}">#</a>
 				</div>
 				<a href="/media/{{ file }}">
-				{% image "./content/blog/media/" + file, file, {height: 160} %}
+				{% thumbnail "./content/blog/media/" + file, file, {height: 160} %}
 				</a>
 			</div>
 		{% endfor %}

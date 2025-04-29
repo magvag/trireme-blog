@@ -159,7 +159,7 @@ p,
 ul,
 ol {
 	font-size: var(--font-size-text);
-	line-height: 1.5;
+	line-height: 1.45;
 	letter-spacing: -0.01rem;
 	margin: 0;
 	hyphens: manual;
@@ -437,6 +437,11 @@ article ol code {
 	border-radius: 3px;
 }
 
+article ul,
+article ol {
+	margin-bottom: 1rem;
+}
+
 /* Header */
 header {
 	display: flex;
@@ -639,6 +644,7 @@ figcaption,
 		left: calc(2% + var(--article-width));
 		margin-left: var(--sidenote-margin);
 		margin-top: .4em;
+		max-width: 200px;
 	}
 	.sidenote::after {
 		content: "";
@@ -742,6 +748,7 @@ figcaption {
 }
 .nav-content .linklist {
 	width: max-content;
+	font-size: 1rem;
 }
 
 .postslist-header {
@@ -857,7 +864,7 @@ footer {
 	opacity: 0.7;
 }
 .footer-built a {
-	color: var(--text-color);
+	color: var(--text-color) !important;
 }
 
 /* CUSTOM CLASSES */
@@ -933,7 +940,7 @@ footer {
 	display: flex;
 	gap: 1.2rem;
 }
-.container#markdown_extras {
+.container#markdown-extras p {
 	font-size: var(--font-size-caption);
 	line-height: 1.2;
 	font-family: var(--font-family-caption);
@@ -941,6 +948,12 @@ footer {
 .container#featured_pages * {
 	font-size: 0.825rem;
 	flex: 1 1 0;
+}
+
+.container#hyphenation * {
+	white-space: normal;
+	font-size: var(--font-size-caption);
+	flex: 0 0 258px;
 }
 
 .birka {

@@ -27,12 +27,15 @@ function formatImages(content) {
 				const [w, h = w] = size.split("x").map(Number);
 				sizeStr = ` =${w * 2}x${h * 2}`;
 			}
+
 			const processedPath =
-				!path.startsWith("http") &&
-				!path.startsWith("/") &&
-				!path.startsWith("media/")
-					? `media/${path.trim()}`
-					: path.trim();
+				path.startsWith("http") ||
+				path.startsWith("/") ||
+				path.startsWith("media/")
+					? // already absolute or full URL?  leave it alone
+						path.trim()
+					: // otherwise, force a root-absolute /media/ path
+						`\/blog\/media\/${path.trim()}`;
 
 			// 5) Reconstruct Markdown: always quote caption if present
 			const captionStr = caption ? ` '${caption}'` : "";

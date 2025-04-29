@@ -56,6 +56,16 @@
 		{%- js %}{% include "public/scripts/scrollable.js" %}{% endjs %}
 		{%- js %}{% include "node_modules/@zachleat/heading-anchors/heading-anchors.js" %}{% endjs %}
 		<script src="{% getBundleFileUrl "js" %}"></script>
+
+		{%- if not thumbnail %}
+		{% set images = media | imagesOnly %}
+		{%- for image in images %}
+			<meta property="og:image" content="/media/{{image}}">
+		{% endfor %}
+		{% else %}
+			<meta property="og:image" content="/media/{{thumbnail}}">
+		{% endif %}
+
 	</head>
 	<body>
 		<a href="#skip" class="visually-hidden">Перейти к содержимому</a>

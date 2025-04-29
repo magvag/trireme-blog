@@ -42,18 +42,20 @@ export default async function (eleventyConfig) {
 	eleventyConfig.addPlugin(hyphenatorPlugin);
 	eleventyConfig.addPlugin(imageFormat);
 
-	eleventyConfig.addPreprocessor("nbspEmDash", "md", (data, content) => {
-		// Replace " —" (regular space + em dash) with non-breaking space + em dash
-		return content.replace(/\u0020—/g, "\u00A0—");
-	});
-
-	eleventyConfig.addPreprocessor("nbspPrepositions", "md", (data, content) => {
-		// Replace short Russian prepositions followed by a space with non-breaking space
-		return content.replace(
-			/ (?:(в|во|к|с|у|о|об|обо|на|над|по|под|для|до|из|от|при|не|и|но|а|как)) /giu,
-			" $1\u00A0",
-		);
-	});
+	// HAD TO PUT INTO HYPHENATOR PLUGIN CAUSE 11ty DOES FASTER PREPROCESSORS FIRST
+	//
+	// eleventyConfig.addPreprocessor("nbspEmDash", "md", (data, content) => {
+	// Replace " —" (regular space + em dash) with non-breaking space + em dash
+	//return content.replace(/\u0020—/g, "\u00A0—");
+	// });
+	//
+	// eleventyConfig.addPreprocessor("nbspPrepositions", "md", (data, content) => {
+	// 	// Replace short Russian prepositions followed by a space with non-breaking space
+	// 	return content.replace(
+	// 		/ (?:(в|во|к|с|у|о|об|обо|на|над|по|под|для|до|из|от|при|не|и|но|а|как)) /giu,
+	// 		" $1\u00A0",
+	// 	);
+	// });
 
 	// Copy the contents of the `public` folder to the output folder
 	// For example, `./public/css/` ends up in `_site/css/`
@@ -68,9 +70,9 @@ export default async function (eleventyConfig) {
 	// https://www.11ty.dev/docs/watch-serve/#add-your-own-watch-targets
 
 	// Watch images for the image pipeline.
-	eleventyConfig.addWatchTarget(
-		"content/blog/media/**/*.{svg,webp,png,jpg,jpeg,gif}",
-	);
+	//eleventyConfig.addWatchTarget(
+	//"content/blog/media/**/*.{svg,webp,png,jpg,jpeg,gif}",
+	//);
 
 	// Per-page bundles, see https://github.com/11ty/eleventy-plugin-bundle
 	// Adds the {% css %} paired shortcode
@@ -153,20 +155,21 @@ export default async function (eleventyConfig) {
 	});
 
 	eleventyConfig.addShortcode(
-		"image",
+		"thumbnail",
 		async function (src, alt, { height = 160 } = {}) {
 			// Get original image dimensions using Sharp
 			const metadata = await sharp(src).metadata();
 			const aspectRatio = metadata.width / metadata.height;
 			const calculatedWidth = Math.round(height * aspectRatio);
 			const filename = path.basename(src);
+			const extname = path.extname(src);
 
 			const imageMetadata = await Image(src, {
 				widths: [calculatedWidth],
 				formats: ["webp"],
 				returnType: "metadata",
 				outputDir: "./_site/media/",
-				urlPath: "./../media/",
+				urlPath: "/media/",
 				filenameFormat: (id, src, width, format) =>
 					`${path.basename(src, path.extname(src))}_thumbnail.${format}`,
 			});
@@ -174,24 +177,13 @@ export default async function (eleventyConfig) {
 			return `
 						<figure>
 								<picture>
-									<img src="${imageMetadata.webp[0].url}" alt="${alt}" height="${height}" width="${calculatedWidth}" loading="lazy" decoding="async">
+									<img src="${imageMetadata.webp[0].url}" alt="${alt}" height="${height}" width="${calculatedWidth}" loading="lazy" decoding="async" eleventy:ignore>
 								</picture>
 							<figcaption style="width: ${calculatedWidth / 2}px">${path.basename(src)}</figcaption>
 						</figure>
 					`;
 		},
 	);
-
-	// Hardcoded replace of bugged image paths
-	eleventyConfig.addTransform("fixImagePaths", function (content, outputPath) {
-		if (outputPath && outputPath.endsWith(".html")) {
-			// Normalize both media\* and \content\media\* paths to \media\*
-			return content
-				.replace(/src="media\\([^"]*)"/g, 'src="\\media\\$1"')
-				.replace(/src="content\\media\\([^"]*)"/g, 'src="\\media\\$1"');
-		}
-		return content;
-	});
 
 	eleventyConfig.addTransform(
 		"halve-image-dimensions",
