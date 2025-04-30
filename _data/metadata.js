@@ -1,7 +1,7 @@
 export default {
 	title: "Трирема",
 	description:
-		"Ещё один сетап для статичного блога с кодом 11ty и вайбом Эгеи. Без админки, с тотальной кастомизацией.",
+		"Ещё один сетап для статичного блога. Код 11ty, вайб Эгеи. Легко расширяется до сайта-портфолио и не просит денег на сервер.",
 	shortdescription: "— ещё один сетап для блога",
 	url: "https://trireme.magvag.ru",
 	language: "ru",
@@ -11,7 +11,7 @@ export default {
 		{ title: "Мануал", url: "/notes/", class: "" },
 		{ title: "Фичи", url: "/tags/features/" },
 		{ title: "#11ty", url: "/tags/11ty/" },
-		{ title: "#Обсидиан", url: "/tags/obsidian/" },
+		{ title: "#Markdown", url: "/tags/markdown/" },
 	],
 	blog_foundation: "2025",
 	author: {

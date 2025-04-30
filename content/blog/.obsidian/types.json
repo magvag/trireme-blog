@@ -7,6 +7,8 @@
     "starred": "checkbox",
     "draft": "checkbox",
     "date": "text",
-    "taglist": "multitext"
+    "taglist": "multitext",
+    "post": "checkbox",
+    "not-post": "checkbox"
   }
 }

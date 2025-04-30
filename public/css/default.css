@@ -167,6 +167,16 @@ ol {
 	-ms-hyphens: manual;
 }
 
+@media (min-width: 760px) {
+	p,
+	ul,
+	ol {
+		hyphens: none;
+		-webkit-hyphens: none;
+		-ms-hyphens: none;
+	}
+}
+
 p {
 	margin-bottom: 1rem;
 }
@@ -960,4 +970,8 @@ footer {
 	font-size: var(--font-size-caption);
 	font-family: var(--font-family-caption);
 	margin-bottom: -0.5rem;
+}
+
+figure .fullwidth {
+	width: 100%;
 }

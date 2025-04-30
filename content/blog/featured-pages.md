@@ -7,8 +7,8 @@ taglist:
   - nunjucks
 draft: 
 starred: true
-layout: layouts/featured.njk
 thumbnail: 11ty-images-2.png
+layout: layouts/featured.njk
 ---
 # Это — страница спецпроекта. {% if starred %}☆{% endif %}
 
