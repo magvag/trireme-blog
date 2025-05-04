@@ -110,7 +110,8 @@ thumbnail: showcase-thumbnail.png
 
 Подробные инструкции по установке, настройке и кастомизации Триремы читайте <a href='/notes/'>в Мануале</a>. Как освоитесь и опубликуете блог на своём домене, постинг новых заметок на сайт сведётся к вызову одной команды в Терминале или клику на иконку рабочего стола.
 
-<a class='giant unvisitable' href='/notes/'>К Мануалу!</a>
+--- {.transparent}
 
 </article>
---- {.transparent}
+
+<a class='giant unvisitable' href='/notes/'>К Мануалу!</a>
