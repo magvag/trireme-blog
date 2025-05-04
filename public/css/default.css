@@ -179,6 +179,7 @@ ol {
 
 p {
 	margin-bottom: 1rem;
+	text-wrap-style: pretty;
 }
 
 p strong,
