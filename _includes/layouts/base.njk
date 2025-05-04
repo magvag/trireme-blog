@@ -57,6 +57,7 @@
 		{%- js %}{% include "node_modules/@zachleat/heading-anchors/heading-anchors.js" %}{% endjs %}
 		<script src="{% getBundleFileUrl "js" %}"></script>
 
+		<html prefix="og: http://ogp.me/ns#">
 		{%- if not thumbnail %}
 		{% set images = media | imagesOnly %}
 		{%- for image in images %}
@@ -64,6 +65,8 @@
 		{% endfor %}
 		{% else %}
 			<meta property="og:image" content="/media/{{thumbnail}}">
+			<meta name="twitter:card" content="summary_large_image">
+
 		{% endif %}
 
 	</head>

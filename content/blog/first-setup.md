@@ -12,11 +12,12 @@ starred: true
 ## Поднимаем локалхост
 
 Напомню краткую инструкцию:
-1. установите [Node.js](https://nodejs.org/en/download),
-2. скачайте и распакуйте [архив с исходниками](https://github.com/magvag/trireme-blog/archive/refs/heads/main.zip)([гитхаб](https://github.com/magvag/trireme-blog)), 
-3. откройте Терминал в папке trireme-blog (`cd путь_до_папки`)
-4. вызовите `npx @11ty/eleventy --serve`,
-5. перейдите на http://localhost:8080
+1. установите себе [Node.js](https://nodejs.org/en/download),
+2. скачайте и распакуйте [архив с исходниками](https://github.com/magvag/trireme-blog/archive/refs/heads/main.zip) ([гитхаб](https://github.com/magvag/trireme-blog)),
+3. откройте Терминал в папке trireme-blog командой `cd путь_до_папки`,
+4. установите все нужные скрипты командой `npm install`,
+5. вызовите `npx @11ty/eleventy --serve`,
+6. перейдите на http://localhost:8080 — там вас будет ждать готовая к изменениям копия этого сайта.
 
 Всё работает? Переходите к следующему разделу.
 

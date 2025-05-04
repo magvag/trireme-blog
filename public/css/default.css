@@ -293,6 +293,14 @@ a:hover u {
 		text-decoration-color 0.05s ease-in;
 }
 
+a:visited:hover,
+a:visited:hover u {
+	text-decoration-color: currentColor;
+	transition:
+		color 0.05s ease-in,
+		text-decoration-color 0.05s ease-in;
+}
+
 main,
 footer {
 	padding: 0;
@@ -388,8 +396,8 @@ hr {
 }
 
 article li {
-	line-height: 1.5rem;
-	margin-top: 0.2rem;
+	line-height: 1.45;
+	margin-top: 0.5rem;
 }
 
 ol,
@@ -949,6 +957,7 @@ footer {
 .container {
 	display: flex;
 	gap: 1.2rem;
+	margin-bottom: 1rem;
 }
 .container#markdown-extras p {
 	font-size: var(--font-size-caption);
@@ -974,4 +983,21 @@ footer {
 
 figure .fullwidth {
 	width: 100%;
+}
+
+.bubble {
+  background: var(--text-color-accent);
+  color: var(--background-color);
+  padding: 0.5em 1.5em 0.6em 1em;
+  margin: 0.1em 0;
+  width: fit-content;
+  border-radius: 0.3em 1.25em 1.25em 0.3em;
+}
+
+.bubble#first {
+  border-top-left-radius: 1.25em;
+}
+
+.bubble#last {
+  margin-bottom: 1rem;
 }
