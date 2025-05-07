@@ -177,6 +177,14 @@ ol {
 	}
 }
 
+@media (max-width: 400px) {
+	p,
+	ul,
+	ol {
+		line-height: 1.35;
+	}
+}
+
 p {
 	margin-bottom: 1rem;
 	text-wrap-style: pretty;
@@ -786,7 +794,7 @@ figcaption {
 }
 
 .preview-title {
-	font-size: 1.7rem;
+	font-size: 1.4rem;
 	margin-bottom: 0.4rem;
 	margin-top: 0.5rem;
 }
