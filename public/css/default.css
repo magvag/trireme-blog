@@ -181,7 +181,8 @@ ol {
 @media (max-width: 420px) {
 	p,
 	ul,
-	ol {
+	ol,
+	li {
 		line-height: 1.35;
 	}
 }
@@ -406,7 +407,6 @@ hr {
 }
 
 article li {
-	line-height: 1.45;
 	margin-top: 0.5rem;
 }
 
