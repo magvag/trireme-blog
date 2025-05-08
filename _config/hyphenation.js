@@ -6,7 +6,8 @@ const hyphenatorRu = new Hypher(russian);
 const hyphenatorEn = new Hypher(english);
 
 const skipLineRx = /^(?:::|[#\[<!]| *\| *[:\-])/;
-const skipWordRx = /::.*::|{.*}|[#.]\[?.+\]?|^\w+=|^\w+:\w+|^\w+\.\w+/;
+const skipWordRx =
+	/::.*::|{.*}|[#.]\[?.+\]?|^\w+=|^\w+:\w+|^\w+\.\w+|\b\w*[\[\]\(\)]\w*\b/;
 const urlRx = /https?:\/\//;
 const cyrillicRx = /[а-яА-ЯёЁ]/;
 const smallWordLength = 7;
