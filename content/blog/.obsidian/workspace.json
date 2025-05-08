@@ -51,12 +51,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "first-setup.md",
+                "file": "markdown-formatting.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "first-setup"
+              "title": "markdown-formatting"
             }
           },
           {
@@ -205,18 +205,17 @@
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "command-palette:Open command palette": false,
-      "templater-obsidian:Templater": false,
-      "custom-sort:Toggle custom sorting": false
+      "templater-obsidian:Templater": false
     }
   },
   "active": "e7c6e58a5b3b35f9",
   "lastOpenFiles": [
+    "first-setup.md",
     "markdown-and-nunjucks.md",
     "markdown-extras.md",
     "markdown-formatting.md",
     "_templates/template.md",
     "why-so-aegean.md",
-    "first-setup.md",
     "_templates/sortspec.md",
     "11ty-preprocessors.md",
     "walled-gardens.md",
