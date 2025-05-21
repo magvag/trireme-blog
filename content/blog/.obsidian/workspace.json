@@ -51,12 +51,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "markdown-and-nunjucks.md",
+                "file": "first-setup.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "markdown-and-nunjucks"
+              "title": "first-setup"
             }
           },
           {
@@ -210,9 +210,10 @@
   },
   "active": "e7c6e58a5b3b35f9",
   "lastOpenFiles": [
+    "link-previews.md",
+    "markdown-and-nunjucks.md",
     "markdown-formatting.md",
     "first-setup.md",
-    "markdown-and-nunjucks.md",
     "markdown-extras.md",
     "_templates/template.md",
     "why-so-aegean.md",
@@ -228,7 +229,6 @@
     "media/why-so-aegean-1.png",
     "media/why-so-aegean.png",
     "hyphenation.md",
-    "link-previews.md",
     "to-the-web.md",
     "Untitled.md",
     "mediateka.md",

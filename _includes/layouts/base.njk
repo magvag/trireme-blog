@@ -58,6 +58,7 @@
 		<script src="{% getBundleFileUrl "js" %}"></script>
 
 		<html prefix="og: http://ogp.me/ns#">
+		<meta name="og:site_name" content="{{ metadata.title }}">
 		{%- if not thumbnail %}
 		{% set images = media | imagesOnly %}
 		{%- for image in images %}
@@ -78,7 +79,7 @@
 					<a href="/" alt="На главную">
 					<img class="avatar"  src="/assets/avatar.webp" alt="На главную" eleventy:ignore>
 					</a>
-					<div class="nav-content scrollable__in">
+					<div class="nav-content scrollable__in js-scrollable">
 						<div class="nav-title unvisitable">
 							<a href="/" class="site-title{% if page.url == '/' %}current-item{% endif %}">{{ metadata.title }}</a>
 							<span class="site-description">{{ metadata.shortdescription }}</span>

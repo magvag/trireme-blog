@@ -36,7 +36,7 @@ export default function (eleventyConfig) {
 		// Formatting tokens for Luxon: https://moment.github.io/luxon/#/formatting?id=table-of-tokens
 		return DateTime.fromJSDate(dateObj, { zone: zone || "utc" })
 			.setLocale("ru")
-			.toFormat(format || "MMM yyyy");
+			.toFormat(format || "LLL yyyy");
 	});
 
 	eleventyConfig.addFilter("taglink", function (posttag) {
