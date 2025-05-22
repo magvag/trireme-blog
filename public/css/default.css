@@ -967,7 +967,13 @@ footer {
 	display: flex;
 	gap: 1.2rem;
 	margin-bottom: 1rem;
+	flex-wrap: wrap;
 }
+
+.container * {
+	min-width: 220px;
+}
+
 .container#markdown-extras p {
 	font-size: var(--font-size-caption);
 	line-height: 1.2;

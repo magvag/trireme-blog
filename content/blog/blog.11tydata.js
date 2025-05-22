@@ -14,11 +14,10 @@ if (fs.existsSync(mediaDir)) {
 export default {
 	layout: "layouts/post.njk",
 	permalink: "/{{ page.fileSlug }}/",
-	tags: ["posts"],
 	eleventyComputed: {
 		tags: (data) => {
 			if (data.notPost) return [];
-			return ["posts"];
+			return [...(data.tags || []), "posts"];
 		},
 		media: (data) => {
 			if (!data.page || !data.page.rawInput) return [];
