@@ -16,7 +16,7 @@ export default {
 	permalink: "/{{ page.fileSlug }}/",
 	eleventyComputed: {
 		tags: (data) => {
-			if (data.notPost) return [];
+			if (data.notPost) return data.tags;
 			return [...(data.tags || []), "posts"];
 		},
 		media: (data) => {
