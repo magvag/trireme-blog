@@ -161,7 +161,6 @@ ul,
 ol {
 	font-size: var(--font-size-text);
 	line-height: 1.45;
-	letter-spacing: -0.01rem;
 	margin: 0;
 	hyphens: manual;
 	-webkit-hyphens: manual;
