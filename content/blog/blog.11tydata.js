@@ -14,10 +14,15 @@ if (fs.existsSync(mediaDir)) {
 export default {
 	layout: "layouts/post.njk",
 	permalink: "/{{ page.fileSlug }}/",
+	// да, ниже костыль с добавлением и удалением тега posts
+	tags: ["posts"],
 	eleventyComputed: {
 		tags: (data) => {
-			if (data.notPost) return data.tags;
-			return [...(data.tags || []), "posts"];
+			if (data.notPost)
+				return data.tags.filter(function (item) {
+					return item !== "posts";
+				});
+			return data.tags;
 		},
 		media: (data) => {
 			if (!data.page || !data.page.rawInput) return [];
