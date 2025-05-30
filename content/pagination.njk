@@ -21,7 +21,7 @@ const eleventyComputed = {
 {% set postsCount = collections.posts | length %}
 
 <div class="postslist-container unvisitable">
-<h1 class="postslist-header">{{metadata.blog_homepage_name}}</h1>
+<h1 class="postslist-header homepage-name">{{metadata.blog_homepage_name}}</h1>
 <a href="{{metadata.blog_homepage}}all/">Все {% include "_includes/n-zametok.njk" %} списком</aф></div>
 
 {% include "postspreviews.njk" %}

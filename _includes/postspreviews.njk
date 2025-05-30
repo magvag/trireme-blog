@@ -18,10 +18,10 @@
 	</div>
 	{% endif %}
 		<h1 class="preview-title unvisitable {% if post.data.starred %}starred{% endif %}">
-			<a href="{{ post.url }}">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
+			<a href="{{ post.url }}">{% if post.data.title %}{{ post.data.title | textHyphenate }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
 		</h1>
 		<div class="preview-description {% if post.data.short %}short{% endif %}">
-			<p> {{ post.data.description | striptags | safe }}</p>
+			<p> {{ post.data.description | striptags | textHyphenate | safe }}</p>
 		</div>
 		{% include "date-and-tags.njk" %}
 </div>

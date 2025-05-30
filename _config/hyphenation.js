@@ -71,4 +71,8 @@ export default function hyphenatorPlugin(eleventyConfig) {
 	eleventyConfig.addPreprocessor("hyphenate", "md", (data, content) => {
 		return hyphenateText(content, hyphenatorRu, hyphenatorEn);
 	});
+
+	eleventyConfig.addFilter("textHyphenate", (content) => {
+		return hyphenateText(content);
+	});
 }
