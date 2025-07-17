@@ -1,4 +1,4 @@
-![](logo.svg) {.logo .adaptive eleventy:ignore}
+![|550x128](logo.svg) {.logo .adaptive eleventy:ignore}
 
 We are developing a logic-gated therapeutic platform—a protein-based system that acts like a molecular “computer.” It reads multiple antigenic inputs (e.g., A AND B, but NOT C) on the surface of immune cells and produces a single output: a conformational change that activates a therapeutic function only if all Boolean conditions are satisfied.
 
@@ -8,8 +8,8 @@ At the core is a modular adapter protein powered by engineered leucine zippers�
 
 ## Lead user cases
 
-:::::::::::: flex { #and }
-:::::: flex { #and-text-2figs }
+:::::::::::: flex { .outer #and }
+:::::: flex { .inner #and-text-2figs }
 
 ### AND gates & Primary Sclerosing Cholangitis (PSC)
 PSC is driven by tissue-resident memory T cells (T~RM~) in the liver expressing CD69 and CXCR6. Our adapter is tuned to this dual-antigen signature, triggering therapeutic action only when both are co-expressed. Unlike standard antibodies, this design avoids damaging beneficial CD69⁺ or CXCR6⁺ populations found elsewhere in the body.
@@ -36,8 +36,8 @@ PSC is driven by tissue-resident memory T cells (T~RM~) in the liver expressing 
 
 
 
-:::::::::::: flex { #not }
-:::::: flex { #not-text-fig }
+:::::::::::: flex { .outer #not }
+:::::: flex { .inner #not-text-fig }
 ### NOT gates & Secondary Progressive Multiple Sclerosis (SPMS)
 Current SPMS therapies fail to selectively eliminate pathogenic T cells without broadly suppressing the immune system. Our system targets Th17.1-like CD4⁺ T cells—a steroid-resistant, neuroinflammatory population defined by CCR6 AND CD161, with optional NOT gates for markers like CD27.
 

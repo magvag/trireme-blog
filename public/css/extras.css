@@ -6,10 +6,17 @@
 .wrapper {
 	position: relative;
 	display: inline-block;
+	margin-bottom: 1rem;
 }
 
 .wrapper img {
 	display: block;
+}
+
+@media (max-width: 450px) {
+	.wrapper img {
+		width: 100%;
+	}
 }
 
 .wrapper .imgcaptions {
@@ -27,25 +34,22 @@
 	}
 }
 
-.flex {
+.inner {
 	display: inline-block;
 }
 
-#and p,
-#and h3 {
+.inner p,
+.inner h3 {
 	max-width: calc(var(--article-width) - 110px);
-	hyphens: manual;
+	/* hyphens: manual; */
 }
 
-#and,
-#not {
+.inner p {
+	margin-bottom: 3rem;
+}
+
+.outer {
 	margin-bottom: 1rem;
-}
-
-#not-text-fig p,
-#not-text-fig h3 {
-	max-width: 489px;
-	hyphens: manual;
 }
 
 #phases {
