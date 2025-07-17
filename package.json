@@ -58,6 +58,8 @@
 		"@mdit/plugin-mark": "^0.16.0",
 		"@mdit/plugin-mathjax": "^0.16.0",
 		"@mdit/plugin-spoiler": "^0.16.0",
+		"@mdit/plugin-sub": "^0.22.1",
+		"@mdit/plugin-sup": "^0.22.1",
 		"@zachleat/heading-anchors": "^1.0.1",
 		"gray-matter": "^4.0.3",
 		"hyphenation.en-gb": "^0.2.1",

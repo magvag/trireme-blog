@@ -7,6 +7,8 @@ import { spoiler } from "@mdit/plugin-spoiler";
 import { mark } from "@mdit/plugin-mark";
 import { figure } from "@mdit/plugin-figure";
 import { imgSize } from "@mdit/plugin-img-size";
+import { sub } from "@mdit/plugin-sub";
+import { sup } from "@mdit/plugin-sup";
 
 export default function markdownItConfig(eleventyConfig) {
 	// latex thingys
@@ -32,7 +34,10 @@ export default function markdownItConfig(eleventyConfig) {
 			.use(imgSize)
 			.use(spoiler)
 			.use(mark)
-			.use(container, { name: "container" })
-			.use(icon),
+			.use(container, { name: "wrapper" })
+			.use(container, { name: "flex" })
+			.use(icon)
+			.use(sub)
+			.use(sup),
 	);
 }

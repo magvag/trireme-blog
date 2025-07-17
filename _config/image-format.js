@@ -18,7 +18,7 @@ function formatImages(content) {
 				!caption ||
 				caption === ""
 			) {
-				caption = "<span></span>";
+				caption = "";
 			}
 
 			// 4) Build size string (double for retina)
@@ -35,11 +35,12 @@ function formatImages(content) {
 					? // already absolute or full URL?  leave it alone
 						path.trim()
 					: // otherwise, force a root-absolute /media/ path
-						`\/blog\/media\/${path.trim()}`;
+						`\/media\/${path.trim()}`;
 
 			// 5) Reconstruct Markdown: always quote caption if present
 			const captionStr = caption ? ` '${caption}'` : "";
-			let result = `![${alt}](${processedPath}${captionStr}${sizeStr})`;
+			// let result = `![${alt}](${processedPath}${captionStr}${sizeStr})`;
+			let result = `![${alt}](${processedPath}${sizeStr})`;
 
 			// 6) Append attrs **after** the closing ")"
 			if (attributes) result += attributes;

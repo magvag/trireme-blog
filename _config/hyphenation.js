@@ -11,12 +11,31 @@ const skipWordRx =
 const urlRx = /https?:\/\//;
 const cyrillicRx = /[а-яА-ЯёЁ]/;
 const smallWordLength = 7;
+const specialFormattingStartRx = /^[\${}\[\`]/; // Start of word with $, {, [, or `
+const specialFormattingEndRx = /[\]$}\`]/; // End of word with special formatting
 
 export function hyphenateText(text) {
+	if (!text) return text;
+
 	const lines = text.split("\n");
+	let isInsideCodeBlock = false; // Track code block state
+	let isInsideSpecialFormatting = false;
+
 	for (let i = 0, L = lines.length; i < L; i++) {
 		const line = lines[i];
-		if (skipLineRx.test(line)) continue;
+
+		// Toggle code block state when encountering fenced code blocks
+		if (line.startsWith("```")) {
+			isInsideCodeBlock = !isInsideCodeBlock;
+			continue;
+		}
+
+		// Skip hyphenation inside code blocks
+		if (isInsideCodeBlock) {
+			continue;
+		}
+
+		if (skipLineRx.test(line.trim())) continue;
 
 		const words = line.split(" ");
 		for (let j = 0, W = words.length; j < W; j++) {
@@ -25,6 +44,17 @@ export function hyphenateText(text) {
 			// 1) quick rejects
 			if (skipWordRx.test(w) || urlRx.test(w) || w.length < smallWordLength) {
 				continue;
+			}
+
+			if (specialFormattingStartRx.test(w)) {
+				isInsideSpecialFormatting = !isInsideSpecialFormatting;
+				continue; // Skip hyphenation for this word
+			}
+
+			// Toggle special formatting state for words ending with special characters
+			if (specialFormattingEndRx.test(w)) {
+				isInsideSpecialFormatting = !isInsideSpecialFormatting;
+				continue; // Skip hyphenation for this word
 			}
 
 			// 2) simple dash-injection

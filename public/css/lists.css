@@ -1,0 +1,22 @@
+ol,
+ul {
+	margin-top: 0;
+	margin-bottom: 1rem;
+	padding-left: 2rem;
+}
+
+p:has(+ ul),
+p:has(+ ol) {
+	margin-bottom: 0;
+}
+
+ul li::marker {
+	content: "·    ";
+}
+
+ul,
+ol {
+	margin-bottom: 1rem;
+}
+
+/* END OF LISTS */

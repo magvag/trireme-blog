@@ -1,122 +1,65 @@
 <!doctype html>
-		<!-- Эта страница `{{ page.url }}` была собрана {% currentBuildDate %} -->
-		<!-- Движок: 11ty, тема: Трирема -->
-<html lang="{{ metadata.language }}">
-	<head>
+<html lang="{{ metadata.language }}" prefix="og: http://ogp.me/ns#">
+
+<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 		<title>{{ title or metadata.title }}</title>
 		<meta name="description" content="{{ description | striptags or metadata.description | striptags }}">
-		<link rel="alternate" href="/rss/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
+
 		<link rel="icon" href="/assets/favicon.svg" sizes="any" type="image/svg+xml">
 		<link rel="icon" href="/assets/favicon.png" sizes="32x32">
 
-    <link rel="preload" href="/assets/avatar.webp" as="image" type="image/webp" crossorigin="">
-
-    {#-
-    совет: если ваш сайт на Нетлифай, вам не нужны скрипты метрик/аналитик.
-    скрипты ухудшают перформанс, нифига не этичны и требуют согласия о куках,
-    Нетлифай-аналитика запросов к серверу анонимна: https://docs.netlify.com/monitor-sites/site-analytics/how-site-analytics-works/#}
-
     {% block preload %}
-    <link rel="preload" href="/fonts/CommissionerRegular.woff2" as="font" type="font/woff2" crossorigin="">
-    <link rel="preload" href="/fonts/CommissionerBoldFlair.woff2" as="font" type="font/woff2" crossorigin="">
-    <link rel="preload" href="/fonts/CommissionerItalic.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="preload" href="/media/logo.svg" as="image" type="svg+xml" crossorigin="">
+    <link rel="preload" href="/fonts/Arsenal-Regular.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="preload" href="/fonts/Arsenal-Bold.woff2" as="font" type="font/woff2" crossorigin="">
     {% endblock %}
 
-		{#-
-		Plain-text bundles are provided via the `eleventy-plugin-bundle` plugin:
-		1. CSS:
-			* Add to a per-page bundle using `{% css %}{% endcss %}`
-			* Retrieve bundle content using `{% getBundle "css" %}` or `{% getBundleFileUrl "css" %}`
-		2. Or for JavaScript:
-			* Add to a per-page bundle using `{% js %}{% endjs %}`
-			* Retrieve via `{% getBundle "js" %}` or `{% getBundleFileUrl "js" %}`
-		3. Learn more: https://github.com/11ty/eleventy-plugin-bundle
-		#}
-
-		{#- Add an arbitrary string to the bundle #}
-		{%- css %}/* This is an arbitrary CSS string added to the bundle */{% endcss %}
-
-		{#- Add the contents of a file to the bundle #}
-		{%- css %}{% include "public/css/default.css" %}{% endcss %}
-		{%- css %}{% include "public/css/custom.css" %}{% endcss %}
+		{%- css %}{% include "public/css/core.css" %}{% endcss %}
+		{%- css %}{% include "public/css/extras.css" %}{% endcss %}
+		{%- css %}{% include "public/css/lists.css" %}{% endcss %}
 		{% block extracss %}{% endblock %}
 
-		{#- Or you can add from node_modules #}
-		{# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
+    <style>{% getBundle "css" %}</style>
+		<!-- <link rel="stylesheet" href="{% getBundleFileUrl "css" %}"> -->
 
-		{#- Render the CSS bundle using inlined CSS (for the fastest site performance in production) #}
-		{#- <style>{% getBundle "css" %}</style> #}
-		{#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
-		<link rel="stylesheet" href="{% getBundleFileUrl "css" %}">
+		<!-- <script src="{% getBundleFileUrl "js" %}"></script> -->
 
-
-		{%- js %}{% include "public/scripts/keyboard-nav.js" %}{% endjs %}
-		{%- js %}{% include "public/scripts/scrollable.js" %}{% endjs %}
-		{%- js %}{% include "node_modules/@zachleat/heading-anchors/heading-anchors.js" %}{% endjs %}
-		<script src="{% getBundleFileUrl "js" %}"></script>
-
-		<html prefix="og: http://ogp.me/ns#">
 		<meta name="og:site_name" content="{{ metadata.title }}">
+
 		{%- if not thumbnail %}
-		{% set images = media | imagesOnly %}
-		{%- for image in images %}
-			<meta property="og:image" content="/media/{{image}}">
-		{% endfor %}
+			<meta name="twitter:card" content="summary_large_image">
+			{% set images = media | imagesOnly %}
+			{%- for image in images %}
+				<meta property="og:image" content="/media/{{image}}">
+			{% endfor %}
+
 		{% else %}
 			<meta property="og:image" content="/media/{{thumbnail}}">
 			<meta name="twitter:card" content="summary_large_image">
 			<meta property="twitter:image" content="/media/{{thumbnail}}">
 		{% endif %}
+</head>
 
-	</head>
-	<body>
-		<a href="#skip" class="visually-hidden">Перейти к содержимому</a>
-			<nav>
-				<h2 class="visually-hidden">Навигация</h2>
-				<div class="nav-container scrollable">
-					<a href="/" alt="На главную">
-					<img class="avatar"  src="/assets/avatar.webp" alt="На главную" eleventy:ignore>
-					</a>
-					<div class="nav-content scrollable__in js-scrollable">
-						<div class="nav-title unvisitable">
-							<a href="/" class="site-title{% if page.url == '/' %}current-item{% endif %}">{{ metadata.title }}</a>
-							<span class="site-description">{{ metadata.shortdescription }}</span>
-						</div>
-							<ul class="linklist">
-												{%- for entry in metadata.navigation_pages %}
-													<li class="linklist-item unvisitable {% if entry.url == page.url %}current-item
-														{% else %}underline{% endif %}
-														{% if entry.class %}
-														{{ entry.class }}
-														{% endif %}
-														">{% if entry.url == page.url %}{{entry.title}}{% else %}
-															<a href="{{ entry.url }}">{{entry.title}}</a>{% endif %}</li>
-												{%- endfor %}
-												</ul>
-						</div>
-					</div>
-			</nav>
-</header>
+<body>
+<!-- <header>
+</header> -->
 
-		<main id="skip">
-			<heading-anchors>
-				{% block beforeContent %}{% endblock %}
+<main id="skip">
+	{% block beforeContent %}{% endblock %}
 
-				{{ content | safe }}
+	{{ content | safe }}
 
-				{% block afterContent %}{% endblock %}
-			</heading-anchors>
-		</main>
+	{% block afterContent %}{% endblock %}
+</main>
 
-		<footer class='unvisitable'>
-			<p class="footer-text">© {{ metadata.author.name }}, {{ metadata.blog_foundation }}{#–{% year %} #}<br>
-			<a href="/rss/">РСС,</a> <a href="https://t.me/magmoyed">телеграм-канал</a><br>
-				Пишите с вопросами: <a href="https://t.me/magvag">@magvag</a></p>
-			<p class="footer-built"> Сделано на <a href="https://trireme.magvag.ru/">Триреме</a></p>
+<footer class='unvisitable'>
+			<p class="footer-text">© {{ metadata.author.name }}, {{ metadata.foundation }}{#–{% year %} #}<br>
+			<a href="mailto:inbox@logicgate.bio">inbox@logicgate.bio</a>
+			<p class="footer-built"> Made by <a href="https://magvag.ru/">magvag</a></p>
+</footer>
 
-		</footer>
-		<script type="module" src="{% getBundleFileUrl "js" %}"></script>
-	</body>
+</body>
 </html>

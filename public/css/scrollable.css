@@ -1,0 +1,40 @@
+.scrollable {
+	max-width: 100%;
+	position: relative;
+	background-color: var(--color-background);
+}
+
+.scrollable__in {
+	height: 100%;
+	overflow: auto;
+	scrollbar-width: none;
+	box-sizing: border-box;
+}
+
+.scrollable::before,
+.scrollable::after {
+	content: "";
+	width: 30px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	pointer-events: none;
+	opacity: 0;
+	transition: 0.15s linear;
+	z-index: 1;
+}
+
+.scrollable::before {
+	left: 0;
+	background: linear-gradient(to right, var(--color-background), transparent);
+}
+
+.scrollable::after {
+	right: 0;
+	background: linear-gradient(to left, var(--color-background), transparent);
+}
+
+.scrollable.is__scrolled::before,
+.scrollable:not(.is__end)::after {
+	opacity: 1;
+}

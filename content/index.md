@@ -1,119 +1,76 @@
+![](logo.svg) {.logo .adaptive eleventy:ignore}
+
+We are developing a logic-gated therapeutic platform—a protein-based system that acts like a molecular “computer.” It reads multiple antigenic inputs (e.g., A AND B, but NOT C) on the surface of immune cells and produces a single output: a conformational change that activates a therapeutic function only if all Boolean conditions are satisfied.
+
+At the core is a modular adapter protein powered by engineered leucine zippers—coiled-coil switches that remain locked unless the full antigenic logic is met. Once unzipped, the adapter exposes a synthetic epitope (Fc fragment or antibody-binding domain), enabling precise engagement of an effector antibody or downstream immune effector.
+
 ---
-thumbnail: showcase-thumbnail.png
----
-<article>
 
-# Трирема — ещё один сетап для блога.
+## Lead user cases
 
-Пишите заметки в любимом Маркдаун-редакторе и одной командой превращайте их в сайт блога — Трирема сделает красиво «из коробки», оставляя вам право на тотальную кастомизацию *всего*: от ЦСС и форматирования абзацев до иерархии страниц, правил автотипографа и оптимизации изображений. За хостинг платить не придётся: 11ty под капотом за секунды сгенерирует статичный сайт, который сервисы вроде Netlify и Vercel опубликуют под вашим доменом бесплатно.
+:::::::::::: flex { #and }
+:::::: flex { #and-text-2figs }
 
-Из фичей Триремы: у постов тут самые красивые ссылки формата `author.com/note`, тексты на телефоне приятно читать из-за ненавязчивых переносов слов, а все использованные в постах медиафайлы упомянуты на страничке-каталоге. Главное — Трирему просто превратить из простого блога в личный сайт с портфолио, страницами проектов и заметками.
+### AND gates & Primary Sclerosing Cholangitis (PSC)
+PSC is driven by tissue-resident memory T cells (T~RM~) in the liver expressing CD69 and CXCR6. Our adapter is tuned to this dual-antigen signature, triggering therapeutic action only when both are co-expressed. Unlike standard antibodies, this design avoids damaging beneficial CD69⁺ or CXCR6⁺ populations found elsewhere in the body.
 
-Весь этот сайт — коробочная версия Триремы. Походите по нему, повтыкайте, возвращайтесь, если понравится.
+::: wrapper { #a-nb }
+![](a-not-b.png)
 
-![](showcase.png){.fullwidth loading=eager}
+![](a-not-b-text.svg) {.imgcaptions .adaptive eleventy:ignore}
+:::
 
-А теперь по порядку: почему доверять свои заметки Телеграму или Медиуму не лучшая затея, как приучить себя писать посты в папку на компьютере и чем блоговые движки уступают генераторам статичных сайтов.
+::: wrapper { #b-na }
+![](b-not-a.png)
 
---- {.transparent}
+![](b-not-a-text.svg) {.imgcaptions .adaptive eleventy:ignore}
+:::
+::::::
 
-![ироничный баннер в стиле фейсбука с corporate memphis иллюстрацией женщины у большого красного замка́, с текстом «Упс! Кажется, вас забанили! Мы удалили ваш аккаунт, потому что вы ужасный человек. Подумайте над своим поведением» и кнопкой «Хорошо»|250](u-got-banned.png){style=margin-left:-5px .glued-pic}
+::: wrapper { #a-b }
+![](a-and-b.png)
 
-## Не пишите в облако
-
-Помните Ноушен? Cоздаёшь свой воркспейс, день за днём заполняешь его конспектами, мыслями, ссылками — и в один прекрасный день получаешь письмо о том, что твой аккаунт будет удалён и пора собирать пожитки.
-
-А ЖЖ помните? Удивлюсь, если да, но всё равно: начинаешь писать на модной платформе для блоггинга, обрастаешь сотнями записей и подписчиков — а потом наблюдаешь, как твоя любимая площадка мучительно умирает, оставляя тебе головную боль по переносу заметок на другую платформу.
-
-Или вот Телеграм, пока ещё здравствующий. Пишешь себе спокойно пост на компьютере, а потом открываешь телефон и половина текста исчезает — знаменитая синхронизация черновиков от олимпиадников. И не дай Аллах вам прикрепить фотографию раньше времени и кликнуть не туда!
-
-Если вы доверите свои заметки сервису, ваше доверие будет обмануто, намеренно или нечаянно. Не верьте лозунгам вроде «данные пользователей для нас бесценны» — от бана или отключения серверов не застрахован никто. Храните свои данные сами.
-
---- {.transparent}
-
-![Окно блокнота Windows XP с бессмысленным черновиком поста, в котором есть пометки к форматированию вроде (выделить жирным). Сверху попап ошибки с надписью Закрой меня](close-the-notepad.png){.glued-pic style=width:300px}
-## Пишите в текстовые файлы
-
-Идея может показаться дикой, если для вас текстовый файл — это  .txt, набранный в Блокноте. Как же форматирование, изображения, гиперссылки, таблички, формулы, сниппеты кода? Если вы не удивлены совету, то скорее всего уже знаете про Markdown-форматирование и заметочники вроде Obsidian, Zettlr и Remarkable, в которых всё это есть.
-
-Локальным Маркдаун-редакторам не нужны аккаунт и облако для нормальной работы, они молниеносно находят и открывают заметки, а самое главное — никак не могут запереть вас в своём огороженном саду by design. Если любимый редактор текста умрёт или скурвится, вы просто установите другой и откроете вашу папку с текстами в нём. Удачи провернуть то же самое с постами в соцсети, движке для блога или хотя бы в Ворде.
-
-Я использую [Обсидиан](https://obsidian.md/) «из коробки». Понадобится что-то специфичное вроде «создавать заметку по шаблону каждый день», «отслеживать прогресс по привычке», «накидать схему», «переименовывать вставленные фотографии автоматом» или «подтянуть выделенный маркером текст из статьи в Зотеро» — подключу под это дело один из тысячи плагинов.
-
-Маркдаун — это удобно.
-
---- {.transparent}
-
-![|100](xp-web-folder.png){.glued-pic}
-## Выбирайте статичные сайты
-
-Среднестатистический сайт — это динамичная сущность из круглосуточно работающего скрипта и баз данных, а не папка с HTML-файлами. Каждый раз, когда пользователь запрашивает доступ к странице, скрипт проверяет пользовательские права, изменения в БД и т. д. — и возвращает пользователю свежесобранную или кэшированную веб-страницу. Так работают Вордпресс, движки для блогов, Тильда, ю нейм ит.
-
-| Плюсы движка {.green}                                                      | Минусы движка {.red}                                                                    |
-| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| Можно войти в учётку администратора с телефона                             | С ненулевой вероятностью это могут сделать и злоумышленники  (привет, Вордпресс)        |
-| Прекрасно выглядит <br>из коробки (если это [Эгея](https://blogengine.ru)) | У автора нет полного контроля над кастомизацией его *авторского* сайта                  |
-| Настройка займёт несколько минут                                           | Нужно платить за сервер, на котором может работать движок, а это 5к/год и головная боль |
-| Относительно удобно (?) работать из админки                                | Движок — это огороженный сад: его нельзя просто взять и сменить на что-то другое        |
-
-[Netlify,](https://www.netlify.com/) [Vercel,](https://vercel.com/guides/deploying-eleventy-with-vercel) [Github Pages](https://pages.github.com/) опубликуют статичный сайт под вашим доменом бесплатно — процессора он не просит, а места на жёстких дисках много. {.sidenote}
-
-Статичный сайт — это лежащая на сервере папка с HTML-файлами, прям как из начала нулевых. Такой сайт нельзя взломать, на нём нет высокоабстрактных сущностей, которые не дают настроить сайт под себя, а сервера для него бесплатны. Приятный бонус: часто статичные сайты легче и быстрее их динамичных близнецов.
-
-Заведите себе статичный блог. С Триремой это можно сделать без знания веб-разработки.
-
---- {.transparent}
-
---- {.transparent}
-
-![|600](obsidian-terminal-screenshot.png) Обсидиан c Терминалом поверх него.
-
-## Превратите заметки в статичный сайт одной командой
-
-Конечно, я не предлагаю вам писать заметки для статичного блога в HTML — для этого используют генераторы статичных сайтов (SSG). SSG — это комбайн по превращению папки с заметками, шаблонами и инструкциями в папку со статичным сайтом.
-
-Под капотом Триремы находится 11ty — один из самых быстрых и масштабируемых SSG. Помимо базового функционала 11ty оптимизирует изображения для быстрой загрузки, объединяет все *нужные* CSS и JS файлы в один для меньшего числа запросов к серверу, и ещё парится о куче других вещей, о которых нам париться не надо.
-
-Сайт Триремы был сгенерирован 11ty за 3 секунды на слабом ноутбуке автора. Всё, что нужно было сделать для этого — вызвать одну команду в терминале.
-
---- {.transparent}
-
---- {.transparent}
-
-
-![|600](zed-editor-screenshot.png) [Zed Editor](https://zed.dev/) с открытым nunjucks-шаблоном Триремы.
-
-## Настройте всё, что пожелаете
-
-Трирема — это очередная модификация [eleventy-base-blog,](https://demo-base-blog.11ty.dev/) блога-примера от разработчиков 11ty. В процессе я разобрался в CSS, конфигурациях генераторов статичных сайтов, закодил все интересные мне фичи вроде переноса слов и медиатеки и наглым образом слизал некоторые дизайн-решения Эгеи (Илья, прости). Короче, веселился.
-
-Я хочу, чтобы Трирема стала для вас личной eleventy-base-blog — стартовой точкой для настройки под ваш вкус. Открывайте `custom.css`, играйтесь с цветами и шрифтами, подключайте плагины в конфиг, закапывайтесь вглубь моей костыльной кодбазы вместе с ЧатГПТ (тот должен узнать свою работу). Короче, веселитесь.
-
-Если вы скучный человек, то будете до конца дней жить с !!сиреневым блогом!!. Специально для вас я закомментировал  внутри `custom.css` скучную черно-белую тему — просто удалите `/*` в начале файла.
-
-Остальные — измените вашу Трирему так сильно, чтобы её можно было назвать кораблём Тесея.
-
---- {.transparent}
+![](a-and-b-text.svg) {.imgcaptions .adaptive eleventy:ignore}
+:::
+::::::::::::
 
 
 
-![|100](xp-to-the-web.png){.glued-pic}
-## Попробуйте Трирему сами
+:::::::::::: flex { #not }
+:::::: flex { #not-text-fig }
+### NOT gates & Secondary Progressive Multiple Sclerosis (SPMS)
+Current SPMS therapies fail to selectively eliminate pathogenic T cells without broadly suppressing the immune system. Our system targets Th17.1-like CD4⁺ T cells—a steroid-resistant, neuroinflammatory population defined by CCR6 AND CD161, with optional NOT gates for markers like CD27.
 
-Трирему на удивление просто запустить! 10 минут, 6 шагов:
-1. установите себе [Node.js](https://nodejs.org/en/download),
-2. скачайте и распакуйте [архив с исходниками](https://github.com/magvag/trireme-blog/archive/refs/heads/main.zip) ([гитхаб](https://github.com/magvag/trireme-blog)),
-3. откройте Терминал в папке trireme-blog командой `cd путь_до_папки`,
-4. установите все нужные скрипты командой `npm install`,
-5. вызовите `npx @11ty/eleventy --serve`,
-6. перейдите на http://localhost:8080 — там вас будет ждать готовая к изменениям копия этого сайта.
+::: wrapper { #a-b-c }
+![](a-and-b-and-c.png)
 
-Подробные инструкции по установке, настройке и кастомизации Триремы читайте <a href='/notes/'>в Мануале</a>. Как освоитесь и опубликуете блог на своём домене, постинг новых заметок на сайт сведётся к вызову одной команды в Терминале или клику на иконку рабочего стола.
+![](a-and-b-and-c-text.svg) {.imgcaptions .adaptive eleventy:ignore}
+:::
+::::::
 
+::: wrapper { #a-b-nc }
+![](a-and-b-and-not-c.png)
 
+![](a-and-b-and-not-c-text.svg) {.imgcaptions .adaptive eleventy:ignore}
+:::
+::::::::::::
 
-</article>
+### Antigenic biocomputers
+Even the simplest logic adapters enable precise depletion of disease-driving cells while sparing regulatory and protective subsets —— and can be easily designed to treat a plethora of diseases, including Behçet’s disease, IBD, and inflammatory atherosclerosis. Yet we believe that the real potential of protein logic gates lies in their ability to be linked together to create complex logic circuits — biocomputers that detect pathogenic cells with extreme specificity.
 
-<a class='giant unvisitable' href='/notes/'>К Мануалу!</a>
+Our ultimate goal is to create such antigenic biocomputers, first by developing AND & NOT gate mechanisms, then by testing their chimeras on disease models.
 
---- {.transparent}
+::: flex { #phases }
+![](phase-1.svg) {eleventy:ignore}
+
+![](phase-2.svg) {eleventy:ignore}
+
+![](phase-3.svg) {eleventy:ignore}
+:::
+
+## Platform Advantages
+- Boolean logic at the protein level: Enables conditionally activated therapy using AND / AND-NOT gates
+- Single-protein architecture: Simplifies delivery, manufacturing, and regulatory approval
+- Modular and reprogrammable: Adapter logic can be rapidly retargeted to new disease subsets
+- Safer than bispecifics or CAR-T: Reduces off-target killing by requiring strict antigen logic fulfillment
+- Cheaper than cell therapies: Fully recombinant format eliminates the need for cell extraction, engineering, or expansion—reducing cost, complexity, and manufacturing time.

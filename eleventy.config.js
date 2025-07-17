@@ -17,8 +17,6 @@ import hyphenatorPlugin from "./_config/hyphenation.js";
 
 import markdownItConfig from "./_config/markdown-it.js";
 
-import taglistForTags from "./_config/proper-tags.js";
-
 import pluginFilters from "./_config/filters.js";
 
 import Eleventy from "@11ty/eleventy-navigation";
@@ -34,47 +32,20 @@ export default async function (eleventyConfig) {
 		}
 	});
 
-	eleventyConfig.addPlugin(taglistForTags);
-
 	// Filters
 	eleventyConfig.addPlugin(pluginFilters);
 
 	eleventyConfig.addPlugin(hyphenatorPlugin);
 	eleventyConfig.addPlugin(imageFormat);
 
-	// HAD TO PUT INTO HYPHENATOR PLUGIN CAUSE 11ty DOES FASTER PREPROCESSORS FIRST
-	//
-	// eleventyConfig.addPreprocessor("nbspEmDash", "md", (data, content) => {
-	// Replace " —" (regular space + em dash) with non-breaking space + em dash
-	//return content.replace(/\u0020—/g, "\u00A0—");
-	// });
-	//
-	// eleventyConfig.addPreprocessor("nbspPrepositions", "md", (data, content) => {
-	// 	// Replace short Russian prepositions followed by a space with non-breaking space
-	// 	return content.replace(
-	// 		/ (?:(в|во|к|с|у|о|об|обо|на|над|по|под|для|до|из|от|при|не|и|но|а|как)) /giu,
-	// 		" $1\u00A0",
-	// 	);
-	// });
-
 	// Copy the contents of the `public` folder to the output folder
 	// For example, `./public/css/` ends up in `_site/css/`
 	eleventyConfig.addPassthroughCopy({
 		"./public/": "/",
-		"./content/feed/pretty-atom-feed.xsl": "/rss/feed.xsl",
-		"./content/blog/media/": "/media/",
+		"./content/media/": "/media/",
 		"./content/assets/": "/assets/",
 	});
 
-	// Run Eleventy when these files change:
-	// https://www.11ty.dev/docs/watch-serve/#add-your-own-watch-targets
-
-	// Watch images for the image pipeline.
-	//eleventyConfig.addWatchTarget(
-	//"content/blog/media/**/*.{svg,webp,png,jpg,jpeg,gif}",
-	//);
-
-	// Per-page bundles, see https://github.com/11ty/eleventy-plugin-bundle
 	// Adds the {% css %} paired shortcode
 	eleventyConfig.addBundle("css", {
 		toFileDirectory: "dist",
@@ -94,25 +65,6 @@ export default async function (eleventyConfig) {
 	eleventyConfig.addPlugin(HtmlBasePlugin);
 	eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
 	eleventyConfig.addPlugin(EleventyRenderPlugin);
-
-	eleventyConfig.addPlugin(feedPlugin, {
-		type: "atom", // or "rss", "json"
-		outputPath: "/rss/feed.xml",
-		stylesheet: "pretty-atom-feed.xsl",
-		collection: {
-			name: "posts",
-			limit: 10,
-		},
-		metadata: {
-			language: "en",
-			title: "Blog Title",
-			subtitle: "This is a longer description about your blog.",
-			base: "https://example.com/",
-			author: {
-				name: "Your Name",
-			},
-		},
-	});
 
 	eleventyConfig.addPlugin(IdAttributePlugin, {
 		// by default we use Eleventy's built-in `slugify` filter:
@@ -201,13 +153,6 @@ export default async function (eleventyConfig) {
 			return content;
 		},
 	);
-	// Features to make your build faster (when you need them)
-
-	// If your passthrough copy gets heavy and cumbersome, add this line
-	// to emulate the file copy on the dev server. Learn more:
-	// https://www.11ty.dev/docs/copy/#emulate-passthrough-copy-during-serve
-
-	// eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
 }
 
 export const config = {

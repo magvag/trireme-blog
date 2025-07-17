@@ -1,0 +1,34 @@
+pre,
+code {
+	font-family: var(--font-family-monospace) !important;
+	line-height: 1.2 !important;
+}
+
+pre:not([class*="language-"]) {
+	margin: 0.5em 0 1em 0;
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+	white-space: pre-wrap;
+}
+
+/* code {
+	font-size: 105%;
+} */
+
+article p code,
+article ul code,
+article ol code {
+	background: var(--color-code-background);
+	padding: 0rem 0.35rem 0.05rem 0.35rem;
+	border-radius: 3px;
+}

@@ -1,0 +1,11 @@
+i {
+	display: inline-block;
+	font-size: 1.1em;
+	width: 1em;
+	height: 1em;
+	background-color: currentColor;
+	mask-size: 1.3em !important;
+	mask-position: center !important;
+	mask-repeat: no-repeat !important;
+	margin-bottom: -1.5px;
+}

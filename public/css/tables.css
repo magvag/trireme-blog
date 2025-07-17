@@ -1,0 +1,29 @@
+table {
+	margin: 1rem 0 2rem 0;
+	border-spacing: 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+	text-align: left;
+	vertical-align: text-top;
+}
+
+table td {
+	padding-top: 0.2em;
+	padding-bottom: 0.6em;
+}
+
+table th {
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	border-bottom: 1px solid
+		color-mix(in srgb, currentColor, transparent var(--transparency-underline));
+}
+
+table br {
+	line-height: 1;
+	margin: -0.13em 0;
+	display: block;
+	content: "";
+}
