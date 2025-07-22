@@ -1,38 +1,20 @@
 ---
-thumbnail: none
+permalink: /v1/
 ---
-# Logic-gated Therapeutics { #name }
+![|550x128](logo.svg) {.logo .adaptive eleventy:ignore}
 
 We are developing a logic-gated therapeutic platform—a protein-based system that acts like a molecular “computer.” It reads multiple antigenic inputs (e.g., A AND B, but NOT C) on the surface of immune cells and produces a single output: a conformational change that activates a therapeutic function only if all Boolean conditions are satisfied.
-
----
-
-## Introduction
-
-Most modern therapies, CAR-T and monoclonal antibodies included, rely on a singular, most distinct cell surface protein, to recognize and kill pathogenic cells. Yet it’s common that this antigen protein is present on healthy cells that are similar to the target ones in their origin and function — and the therapy kills them too, sometimes leaving a patient with a malfunctioning organ or a system.
-
-The time-proven solution is to use at least two antigens for recognition, thus reducing the collateral damage significantly. There are multiple FDA approved bispecific systems: bispecific antibodies, ...
-
-::: wrapper { #therapies }
-![](therapies.png)
-
-![](therapies-text.svg) {.imgcaptions eleventy:ignore}
-:::
-
-We are developing a regulations-friendly therapeutics platform that will rely on two, three or more antigens, estimating their presence in a logic-gated manner.
 
 At the core is a modular adapter protein powered by engineered leucine zippers—coiled-coil switches that remain locked unless the full antigenic logic is met. Once unzipped, the adapter exposes a synthetic epitope (Fc fragment or antibody-binding domain), enabling precise engagement of an effector antibody or downstream immune effector.
 
 ---
 
-## 1, 2, 3 roadmap
-
-Our ultimate goal is to create antigenic biocomputers gate-by-gate, producing treatments with each iteration of our mechanism. Here is the 3 step and 3 lead use cases that we see ahead.
+## Lead user cases
 
 :::::::::::: flex { .outer #and }
 :::::: flex { .inner #and-text-2figs }
 
-### 1. AND gates & Primary Sclerosing Cholangitis (PSC)
+### AND gates & Primary Sclerosing Cholangitis (PSC)
 PSC is driven by tissue-resident memory T cells (T~RM~) in the liver expressing CD69 and CXCR6. Our adapter is tuned to this dual-antigen signature, triggering therapeutic action only when both are co-expressed. Unlike standard antibodies, this design avoids damaging beneficial CD69⁺ or CXCR6⁺ populations found elsewhere in the body.
 
 ::: wrapper { #a-nb }
@@ -59,7 +41,7 @@ PSC is driven by tissue-resident memory T cells (T~RM~) in the liver expressing 
 
 :::::::::::: flex { .outer #not }
 :::::: flex { .inner #not-text-fig }
-### 2. NOT gates & Secondary Progressive Multiple Sclerosis (SPMS)
+### NOT gates & Secondary Progressive Multiple Sclerosis (SPMS)
 Current SPMS therapies fail to selectively eliminate pathogenic T cells without broadly suppressing the immune system. Our system targets Th17.1-like CD4⁺ T cells—a steroid-resistant, neuroinflammatory population defined by CCR6 AND CD161, with optional NOT gates for markers like CD27.
 
 ::: wrapper { #a-b-c }
@@ -76,18 +58,18 @@ Current SPMS therapies fail to selectively eliminate pathogenic T cells without 
 :::
 ::::::::::::
 
-### 3. Antigenic biocomputers
+### Antigenic biocomputers
 Even the simplest logic adapters enable precise depletion of disease-driving cells while sparing regulatory and protective subsets —— and can be easily designed to treat a plethora of diseases, including Behçet’s disease, IBD, and inflammatory atherosclerosis. Yet we believe that the real potential of protein logic gates lies in their ability to be linked together to create complex logic circuits — biocomputers that detect pathogenic cells with extreme specificity.
 
+Our ultimate goal is to create such antigenic biocomputers, first by developing AND & NOT gate mechanisms, then by testing their chimeras on disease models.
+
 ::: flex { #phases }
-![|217x107](phase-1.svg) {eleventy:ignore}
+![](phase-1.svg) {eleventy:ignore}
 
-![|288x168](phase-2.svg) {eleventy:ignore}
+![](phase-2.svg) {eleventy:ignore}
 
-![|375x278](phase-3.svg) {eleventy:ignore}
+![](phase-3.svg) {eleventy:ignore}
 :::
-
-
 
 ## Platform Advantages
 - Boolean logic at the protein level: Enables conditionally activated therapy using AND / AND-NOT gates

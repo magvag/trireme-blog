@@ -1,6 +1,13 @@
 .logo {
-	max-width: var(--article-width) !important;
+	max-width: 100%;
 	margin-bottom: 3rem;
+}
+
+#name {
+	font-size: 2.3rem;
+	line-height: 95%;
+	margin: 2% 0 1rem 0;
+	font-weight: normal;
 }
 
 .wrapper {
@@ -16,6 +23,10 @@
 @media (max-width: 450px) {
 	.wrapper img {
 		width: 100%;
+	}
+
+	#phases {
+		flex-wrap: wrap;
 	}
 }
 
@@ -55,4 +66,5 @@
 #phases {
 	display: flex;
 	gap: 2%;
+	max-width: var(--article-width);
 }

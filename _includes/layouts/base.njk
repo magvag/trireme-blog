@@ -12,7 +12,7 @@
 		<link rel="icon" href="/assets/favicon.png" sizes="32x32">
 
     {% block preload %}
-    <link rel="preload" href="/media/logo.svg" as="image" type="svg+xml" crossorigin="">
+    <!-- <link rel="preload" href="/media/logo.svg" as="image" type="svg+xml" crossorigin=""> -->
     <link rel="preload" href="/fonts/Arsenal-Regular.woff2" as="font" type="font/woff2" crossorigin="">
     <link rel="preload" href="/fonts/Arsenal-Bold.woff2" as="font" type="font/woff2" crossorigin="">
     {% endblock %}
@@ -44,8 +44,6 @@
 </head>
 
 <body>
-<!-- <header>
-</header> -->
 
 <main id="skip">
 	{% block beforeContent %}{% endblock %}
@@ -58,7 +56,7 @@
 <footer class='unvisitable'>
 			<p class="footer-text">© {{ metadata.author.name }}, {{ metadata.foundation }}{#–{% year %} #}<br>
 			<a href="mailto:inbox@logicgate.bio">inbox@logicgate.bio</a>
-			<p class="footer-built"> Made by <a href="https://magvag.ru/">magvag</a></p>
+			<p class="footer-built"> made by <a href="https://magvag.ru/">magvag</a></p>
 </footer>
 
 </body>

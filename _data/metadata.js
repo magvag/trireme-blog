@@ -1,7 +1,7 @@
 export default {
-	title: "Logic-gated therapeutics",
+	title: "Logic-gated Therapeutics",
 	description:
-		"Developing a protein-based ‘biocomputer’ that takes multiple antigen presence as input and outputs a binding of a therapeutic antibody.",
+		"Developing protein-based biocomputers that takes multiple antigenic presence as input and outputs a trigger for a therapeutic effect.",
 	url: "https://logicgate.bio",
 	language: "en",
 	foundation: "2025",
