@@ -37,12 +37,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "hyphenation.md",
-                "mode": "source",
+                "file": "to-the-web.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "hyphenation"
+              "title": "to-the-web"
             }
           },
           {
@@ -51,12 +51,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "first-setup.md",
+                "file": "end-mark.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "first-setup"
+              "title": "end-mark"
             }
           },
           {
@@ -74,7 +74,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -208,41 +208,41 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "e7c6e58a5b3b35f9",
+  "active": "2336a35641bd80b6",
   "lastOpenFiles": [
-    "link-previews.md",
-    "markdown-and-nunjucks.md",
-    "markdown-formatting.md",
-    "first-setup.md",
-    "markdown-extras.md",
-    "_templates/template.md",
-    "why-so-aegean.md",
-    "_templates/sortspec.md",
-    "11ty-preprocessors.md",
-    "walled-gardens.md",
-    "beautiful-urls.md",
+    "hyphenation.md",
     "end-mark.md",
+    "walled-gardens.md",
+    "to-the-web.md",
+    "why-so-aegean.md",
+    "performance.md",
+    "pagination.md",
+    "mediateka.md",
+    "markdown-formatting.md",
+    "markdown-extras.md",
+    "markdown-and-nunjucks.md",
+    "link-previews.md",
+    "forward-to-the-past.md",
+    "first-setup.md",
+    "featured-pages.md",
+    "easter-egg.md",
+    "beautiful-urls.md",
+    "11ty-preprocessors.md",
+    "11ty-images.md",
+    "11ty-config.md",
+    "_templates/template.md",
+    "_templates/sortspec.md",
     "media/why-so-aegean-2.png",
     "media/1.1-win-3.png",
     "media/biolayout-fhd-poster.png",
     "media/typolayout-poster.png",
     "media/why-so-aegean-1.png",
     "media/why-so-aegean.png",
-    "hyphenation.md",
-    "to-the-web.md",
     "Untitled.md",
-    "mediateka.md",
-    "featured-pages.md",
-    "11ty-images.md",
     "media/showcase-thumbnail.png",
     "media/showcase.png",
     "media/showcase-thumbnail 2.png",
     "media/showcase-thumbnail 1.png",
-    "easter-egg.md",
-    "forward-to-the-past.md",
-    "performance.md",
-    "pagination.md",
-    "11ty-config.md",
     "media/A-Note-on-the-Type.pdf",
     "draft.md",
     "newnote.md",

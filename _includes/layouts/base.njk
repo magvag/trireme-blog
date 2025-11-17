@@ -40,6 +40,7 @@
 
 		{#- Add the contents of a file to the bundle #}
 		{%- css %}{% include "public/css/default.css" %}{% endcss %}
+		{%- css %}{% include "public/css/exampleclasses.css" %}{% endcss %}
 		{%- css %}{% include "public/css/custom.css" %}{% endcss %}
 		{% block extracss %}{% endblock %}
 
@@ -60,6 +61,8 @@
 		<html prefix="og: http://ogp.me/ns#">
 		<meta name="og:site_name" content="{{ metadata.title }}">
 		{%- if not thumbnail %}
+		<meta name="twitter:card" content="summary_large_image">
+		<meta property="twitter:image" content="/media/{{largestImage}}">
 		{% set images = media | imagesOnly %}
 		{%- for image in images %}
 			<meta property="og:image" content="/media/{{image}}">

@@ -13,9 +13,11 @@ import Image from "@11ty/eleventy-img";
 import path from "node:path";
 import sharp from "sharp";
 
-import hyphenatorPlugin from "./_config/hyphenation.js";
+import shortcodePlugin from "./_config/shortcodes.js";
 
 import markdownItConfig from "./_config/markdown-it.js";
+
+import typographer from "./_config/typographer.js";
 
 import taglistForTags from "./_config/proper-tags.js";
 
@@ -35,46 +37,18 @@ export default async function (eleventyConfig) {
 	});
 
 	eleventyConfig.addPlugin(taglistForTags);
-
-	// Filters
+	eleventyConfig.addPlugin(typographer);
 	eleventyConfig.addPlugin(pluginFilters);
-
-	eleventyConfig.addPlugin(hyphenatorPlugin);
 	eleventyConfig.addPlugin(imageFormat);
-
-	// HAD TO PUT INTO HYPHENATOR PLUGIN CAUSE 11ty DOES FASTER PREPROCESSORS FIRST
-	//
-	// eleventyConfig.addPreprocessor("nbspEmDash", "md", (data, content) => {
-	// Replace " —" (regular space + em dash) with non-breaking space + em dash
-	//return content.replace(/\u0020—/g, "\u00A0—");
-	// });
-	//
-	// eleventyConfig.addPreprocessor("nbspPrepositions", "md", (data, content) => {
-	// 	// Replace short Russian prepositions followed by a space with non-breaking space
-	// 	return content.replace(
-	// 		/ (?:(в|во|к|с|у|о|об|обо|на|над|по|под|для|до|из|от|при|не|и|но|а|как)) /giu,
-	// 		" $1\u00A0",
-	// 	);
-	// });
 
 	// Copy the contents of the `public` folder to the output folder
 	// For example, `./public/css/` ends up in `_site/css/`
 	eleventyConfig.addPassthroughCopy({
 		"./public/": "/",
-		"./content/feed/pretty-atom-feed.xsl": "/rss/feed.xsl",
-		"./content/blog/media/": "/media/",
+		"./content/media/": "/media/",
 		"./content/assets/": "/assets/",
 	});
 
-	// Run Eleventy when these files change:
-	// https://www.11ty.dev/docs/watch-serve/#add-your-own-watch-targets
-
-	// Watch images for the image pipeline.
-	//eleventyConfig.addWatchTarget(
-	//"content/blog/media/**/*.{svg,webp,png,jpg,jpeg,gif}",
-	//);
-
-	// Per-page bundles, see https://github.com/11ty/eleventy-plugin-bundle
 	// Adds the {% css %} paired shortcode
 	eleventyConfig.addBundle("css", {
 		toFileDirectory: "dist",
@@ -115,7 +89,6 @@ export default async function (eleventyConfig) {
 	});
 
 	eleventyConfig.addPlugin(IdAttributePlugin, {
-		// by default we use Eleventy's built-in `slugify` filter:
 		// slugify: eleventyConfig.getFilter("slugify"),
 		// selector: "h1,h2,h3,h4,h5,h6", // default
 	});
@@ -123,7 +96,8 @@ export default async function (eleventyConfig) {
 	// Image optimization: https://www.11ty.dev/docs/plugins/image/#eleventy-transform
 	eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
 		// Output formats for each image.
-		formats: ["jpeg", "webp", "auto"],
+		formats: ["webp", "svg", "auto"],
+		svgShortCircuit: true,
 
 		widths: ["auto"],
 		outputDir: "./_site/media/",
@@ -153,6 +127,8 @@ export default async function (eleventyConfig) {
 	eleventyConfig.addShortcode("currentBuildDate", () => {
 		return new Date().toISOString();
 	});
+
+	eleventyConfig.addPlugin(shortcodePlugin);
 
 	eleventyConfig.addShortcode(
 		"thumbnail",
